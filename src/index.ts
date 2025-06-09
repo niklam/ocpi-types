@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 // Core decorators
 export * from './decorators';
 

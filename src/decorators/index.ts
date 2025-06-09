@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 // Root exports
 export * from './is-ocpi-ci-string.decorator';
 export * from './is-ocpi-datetime.decorator';

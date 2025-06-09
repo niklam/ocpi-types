@@ -1,8 +1,8 @@
 {
-  "name": "ocpi-types-v2.2.1",
-  "version": "0.1.0",
+  "name": "ocpi-types",
+  "version": "1.0.0",
   "description": "TypeScript DTOs and enums for OCPI 2.2.1 specification.",
-  "author": "Niklas Lampén",
+  "author": "Niklas Lampén <niklas@lampen.fi>",
   "keywords": [
     "ocpi",
     "ocpi-2.2.1",
@@ -10,8 +10,14 @@
     "dto",
     "enum"
   ],
-  "private": true,
   "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -134,6 +140,16 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
-    "setupFiles": ["reflect-metadata/Reflect"]
+    "setupFiles": [
+      "reflect-metadata/Reflect"
+    ]
+  },
+  "homepage": "https://github.com/niklam/ocpi-types-v2.2.1/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niklam/ocpi-types-v2.2.1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/niklam/ocpi-types-v2.2.1/issues"
   }
 }

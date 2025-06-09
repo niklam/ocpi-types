@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 // DTOs
 export * from './dtos/price-component.dto';
 export * from './dtos/tariff-element.dto';

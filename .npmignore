@@ -1,0 +1,29 @@
+# Create .npmignore file
+cat > .npmignore << 'EOF'
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Development files
+.prettierrc
+eslint.config.mjs
+nest-cli.json
+tsconfig*.json
+create-index-files.*
+
+# Tests
+**/*.spec.ts
+**/*.test.ts
+__tests__/
+coverage/
+
+# Development
+node_modules/
+.git/
+.env*
+.DS_Store
+
+# Build artifacts that shouldn't be published
+*.tgz
+EOF

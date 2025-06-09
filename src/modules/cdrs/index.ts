@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 // DTOs
 export * from './dtos/cdr-dimension.dto';
 export * from './dtos/cdr-location.dto';

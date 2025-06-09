@@ -31,7 +31,10 @@ npm install class-validator class-transformer reflect-metadata
 
 ## 🚀 Quick Start
 
+**Important: Import reflect-metadata first!**
+
 ```typescript
+import 'reflect-metadata';
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
 import { LocationDto, ConnectorType, Status } from 'ocpi-types-2.2.1';
@@ -284,7 +287,7 @@ Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md)
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ocpi-types-2.2.1.git
+git clone https://github.com/niklam/ocpi-types-2.2.1.git
 cd ocpi-types-2.2.1
 
 # Install dependencies

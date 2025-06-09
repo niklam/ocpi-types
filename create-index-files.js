@@ -21,7 +21,10 @@ function getTypeScriptFiles(dir, subdir = '') {
 
 // Function to create index file content
 function createIndexContent(moduleName, files) {
-    const lines = [];
+    const lines = [
+        'import \'reflect-metadata\';',
+        '',
+    ];
 
     // Group files by type
     const dtos = files.filter(f => f.path.includes('dtos/'));
@@ -108,7 +111,9 @@ modules.forEach(moduleDir => {
 // Create main index.ts
 console.log('\n📝 Creating main src/index.ts file...');
 
-const mainIndexContent = `// Core decorators
+const mainIndexContent = `import 'reflect-metadata';
+
+// Core decorators
 export * from './decorators';
 
 // OCPI Modules

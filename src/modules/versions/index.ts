@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 // DTOs
 export * from './dtos/endpoint.dto';
 

@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 // DTOs
 export * from './dtos/active-charging-profile-result.dto';
 export * from './dtos/active-charging-profile.dto';

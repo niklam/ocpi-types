@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 // DTOs
 export * from './dtos/cancel-reservation.dto';
 export * from './dtos/command-response.dto';

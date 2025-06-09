@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 // DTOs
 export * from './dtos/authorization-info.dto';
 export * from './dtos/energy-contract.dto';

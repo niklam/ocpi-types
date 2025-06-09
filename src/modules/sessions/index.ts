@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 // DTOs
 export * from './dtos/charging-preferences.dto';
 export * from './dtos/session.dto';
