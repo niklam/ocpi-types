@@ -37,7 +37,7 @@ npm install class-validator class-transformer reflect-metadata
 import 'reflect-metadata';
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
-import { LocationDto, ConnectorType, Status } from 'ocpi-types';
+import { LocationDto, ConnectorType, Status } from 'ocpi-types/locations';
 
 // Create and validate a location
 const locationData = {
@@ -50,6 +50,7 @@ const locationData = {
   city: 'Berlin',
   postal_code: '10115',
   country: 'DEU',
+  time_zone: 'Europe/Berlin',
   coordinates: {
     latitude: '52.520008',
     longitude: '13.404954'
@@ -143,7 +144,7 @@ import {
 ### NestJS Controller
 ```typescript
 import { Controller, Post, Body } from '@nestjs/common';
-import { LocationDto } from 'ocpi-types';
+import { LocationDto } from 'ocpi-types/locations';
 
 @Controller('ocpi/2.2.1/locations')
 export class LocationsController {
@@ -159,7 +160,7 @@ export class LocationsController {
 ```typescript
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
-import { ConnectorDto, ConnectorType, ConnectorFormat, PowerType } from 'ocpi-types';
+import { ConnectorDto, ConnectorType, ConnectorFormat, PowerType } from 'ocpi-types/locations';
 
 const connectorData = {
   id: 'CONN001',
@@ -181,7 +182,8 @@ if (errors.length === 0) {
 
 ### Working with Enums
 ```typescript
-import { Status, ConnectorType, TariffType } from 'ocpi-types';
+import { Status, ConnectorType } from 'ocpi-types/locations';
+import { TariffType } from 'ocpi-types/tariff';
 
 // Type-safe enum usage
 const connectorType: ConnectorType = ConnectorType.IEC_62196_T2;
@@ -251,6 +253,8 @@ Ensure your `tsconfig.json` includes:
 ```json
 {
   "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   }
