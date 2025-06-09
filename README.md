@@ -1,4 +1,4 @@
-# OCPI Types 2.2.1
+# OCPI Types
 
 [![npm version](https://badge.fury.io/js/ocpi-types-2.2.1.svg)](https://www.npmjs.com/package/ocpi-types-2.2.1)
 [![OCPI Version](https://img.shields.io/badge/OCPI-2.2.1-blue.svg)](https://github.com/ocpi/ocpi)
@@ -21,7 +21,7 @@ TypeScript DTOs (Data Transfer Objects) and enums for the **OCPI 2.2.1** (Open C
 ## 📦 Installation
 
 ```bash
-npm install ocpi-types-2.2.1
+npm install ocpi-types
 ```
 
 **Peer dependencies:**
@@ -37,7 +37,7 @@ npm install class-validator class-transformer reflect-metadata
 import 'reflect-metadata';
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
-import { LocationDto, ConnectorType, Status } from 'ocpi-types-2.2.1';
+import { LocationDto, ConnectorType, Status } from 'ocpi-types';
 
 // Create and validate a location
 const locationData = {
@@ -79,7 +79,7 @@ import {
   ConnectorFormat,
   Status,
   Capability 
-} from 'ocpi-types-2.2.1/locations';
+} from 'ocpi-types/locations';
 ```
 
 ### 💰 Tariffs
@@ -90,7 +90,7 @@ import {
   PriceComponentDto,
   TariffType,
   TariffDimensionType 
-} from 'ocpi-types-2.2.1/tariffs';
+} from 'ocpi-types/tariffs';
 ```
 
 ### 📊 Sessions & CDRs
@@ -101,7 +101,7 @@ import {
   ChargingPeriodDto,
   SessionStatus,
   AuthMethod 
-} from 'ocpi-types-2.2.1/sessions';
+} from 'ocpi-types/sessions';
 ```
 
 ### 🎫 Tokens
@@ -112,7 +112,7 @@ import {
   TokenType,
   AllowedType,
   WhitelistType 
-} from 'ocpi-types-2.2.1/tokens';
+} from 'ocpi-types/tokens';
 ```
 
 ### ⚡ Commands
@@ -124,7 +124,7 @@ import {
   CommandResponseDto,
   CommandType,
   CommandResponseType 
-} from 'ocpi-types-2.2.1/commands';
+} from 'ocpi-types/commands';
 ```
 
 ### 🔧 Charging Profiles
@@ -135,7 +135,7 @@ import {
   ActiveChargingProfileDto,
   ChargingRateUnit,
   ChargingProfileResponseType 
-} from 'ocpi-types-2.2.1/charging-profiles';
+} from 'ocpi-types/charging-profiles';
 ```
 
 ## 🎯 Usage Examples
@@ -143,7 +143,7 @@ import {
 ### NestJS Controller
 ```typescript
 import { Controller, Post, Body } from '@nestjs/common';
-import { LocationDto } from 'ocpi-types-2.2.1';
+import { LocationDto } from 'ocpi-types';
 
 @Controller('ocpi/2.2.1/locations')
 export class LocationsController {
@@ -159,7 +159,7 @@ export class LocationsController {
 ```typescript
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
-import { ConnectorDto, ConnectorType, ConnectorFormat, PowerType } from 'ocpi-types-2.2.1';
+import { ConnectorDto, ConnectorType, ConnectorFormat, PowerType } from 'ocpi-types';
 
 const connectorData = {
   id: 'CONN001',
@@ -181,7 +181,7 @@ if (errors.length === 0) {
 
 ### Working with Enums
 ```typescript
-import { Status, ConnectorType, TariffType } from 'ocpi-types-2.2.1';
+import { Status, ConnectorType, TariffType } from 'ocpi-types';
 
 // Type-safe enum usage
 const connectorType: ConnectorType = ConnectorType.IEC_62196_T2;
@@ -200,7 +200,7 @@ This library includes custom validation decorators for OCPI-specific formats:
 Validates OCPI datetime format (ISO 8601 with timezone).
 
 ```typescript
-import { IsOcpiDateTime } from 'ocpi-types-2.2.1/decorators';
+import { IsOcpiDateTime } from 'ocpi-types/decorators';
 
 class MyDto {
   @IsOcpiDateTime()
@@ -212,7 +212,7 @@ class MyDto {
 Validates OCPI case-insensitive string format.
 
 ```typescript
-import { IsOcpiCiString } from 'ocpi-types-2.2.1/decorators';
+import { IsOcpiCiString } from 'ocpi-types/decorators';
 
 class MyDto {
   @IsOcpiCiString()
@@ -224,7 +224,7 @@ class MyDto {
 Validates 24-hour time format (HH:MM).
 
 ```typescript
-import { IsTime } from 'ocpi-types-2.2.1/decorators';
+import { IsTime } from 'ocpi-types/decorators';
 
 class MyDto {
   @IsTime()
@@ -287,8 +287,8 @@ Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md)
 
 ```bash
 # Clone the repository
-git clone https://github.com/niklam/ocpi-types-2.2.1.git
-cd ocpi-types-2.2.1
+git clone https://github.com/niklam/ocpi-types.git
+cd ocpi-types
 
 # Install dependencies
 npm install
@@ -327,13 +327,13 @@ Check out our [examples directory](./examples) for common usage patterns:
 
 ## 🆘 Support
 
-- 📖 [Documentation](https://github.com/yourusername/ocpi-types-2.2.1/wiki)
-- 🐛 [Report Issues](https://github.com/yourusername/ocpi-types-2.2.1/issues)
-- 💬 [Discussions](https://github.com/yourusername/ocpi-types-2.2.1/discussions)
+- 📖 [Documentation](https://github.com/niklam/ocpi-types/wiki)
+- 🐛 [Report Issues](https://github.com/niklam/ocpi-types/issues)
+- 💬 [Discussions](https://github.com/niklam/ocpi-types/discussions)
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
