@@ -1,6 +1,6 @@
 # OCPI Types
 
-[![npm version](https://badge.fury.io/js/ocpi-types-2.2.1.svg)](https://www.npmjs.com/package/ocpi-types-2.2.1)
+[![npm version](https://badge.fury.io/js/ocpi-types.svg)](https://www.npmjs.com/package/ocpi-types)
 [![OCPI Version](https://img.shields.io/badge/OCPI-2.2.1-blue.svg)](https://github.com/ocpi/ocpi)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
