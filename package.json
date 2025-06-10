@@ -1,6 +1,6 @@
 {
   "name": "ocpi-types",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "TypeScript DTOs and enums for OCPI 2.2.1 specification.",
   "author": "Niklas Lampén <niklas@lampen.fi>",
   "keywords": [
@@ -22,7 +22,6 @@
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "echo Version created %s",
-
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
