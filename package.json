@@ -19,6 +19,10 @@
     "LICENSE"
   ],
   "scripts": {
+    "preversion": "npm test",
+    "version": "npm run build",
+    "postversion": "echo Version created %s",
+
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
