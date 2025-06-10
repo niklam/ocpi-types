@@ -416,20 +416,10 @@ npm run test:watch
 npm run test:coverage
 ```
 
-## 📝 Examples & Recipes
-
-Check out our [examples directory](./examples) for common usage patterns:
-
-- 🏢 [Building a Location Service](./examples/location-service.ts)
-- 💰 [Tariff Management](./examples/tariff-management.ts)
-- 🔌 [Session Handling](./examples/session-handling.ts)
-- 🎫 [Token Validation](./examples/token-validation.ts)
-
 ## 🆘 Support
 
 - 📖 [Documentation](https://github.com/niklam/ocpi-types/wiki)
 - 🐛 [Report Issues](https://github.com/niklam/ocpi-types/issues)
-- 💬 [Discussions](https://github.com/niklam/ocpi-types/discussions)
 
 ## 📜 License
 
