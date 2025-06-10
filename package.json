@@ -21,7 +21,7 @@
   "scripts": {
     "preversion": "npm test",
     "version": "npm run build",
-    "postversion": "echo Version created %s",
+    "postversion": "git push --tags && echo Pushed new tag to git",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
