@@ -1,6 +1,6 @@
 {
   "name": "ocpi-types",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "TypeScript DTOs and enums for OCPI 2.2.1 specification.",
   "author": "Niklas Lampén <niklas@lampen.fi>",
   "keywords": [
