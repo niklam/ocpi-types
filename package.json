@@ -94,6 +94,9 @@
       "require": "./dist/modules/hubclientinfo/index.js"
     }
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
