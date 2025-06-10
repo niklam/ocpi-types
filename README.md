@@ -72,14 +72,33 @@ if (errors.length === 0) {
 
 ### 🏢 Locations
 ```typescript
-import { 
-  LocationDto, 
-  EVSEDto, 
+import {
+  LocationDto,
+  EVSEDto,
   ConnectorDto,
+  GeoLocationDto,
+  BusinessDetailsDto,
+  EnergyMixDto,
+  EnergySourceDto,
+  EnvironmentalImpactDto,
+  AdditionalGeoLocationDto,
+  StatusScheduleDto,
+  RegularHoursDto,
+  ImageDto,
+  PublishTokenTypeDto,
+  HoursDto,
+  ExceptionalPeriodDto,
   ConnectorType,
   ConnectorFormat,
   Status,
-  Capability 
+  Capability,
+  PowerType,
+  EnergySourceCategory,
+  Facility,
+  EnvironmentalImpactCategory,
+  ParkingType,
+  ImageCategory,
+  ParkingRestriction
 } from 'ocpi-types/locations';
 ```
 
@@ -89,20 +108,37 @@ import {
   TariffDto, 
   TariffElementDto,
   PriceComponentDto,
+  TariffRestrictionsDto,
   TariffType,
-  TariffDimensionType 
+  TariffDimensionType,
+  DayOfWeekEnum,
+  ReservationRestrictionTypeEnum
 } from 'ocpi-types/tariffs';
 ```
 
 ### 📊 Sessions & CDRs
 ```typescript
+// Sessions
 import { 
   SessionDto,
+  ChargingPreferencesDto,
+  SessionStatus,
+  ProfileType,
+  ChargingPreferencesResponse
+} from 'ocpi-types/sessions';
+
+// CDRs
+import { 
   CdrDto,
   ChargingPeriodDto,
-  SessionStatus,
-  AuthMethod 
-} from 'ocpi-types/sessions';
+  SignedValueDto,
+  CdrLocationDto,
+  SignedDataDto,
+  CdrDimensionDto,
+  CdrTokenDto,
+  AuthMethod,
+  CdrDimensionType
+} from 'ocpi-types/cdrs';
 ```
 
 ### 🎫 Tokens
@@ -110,9 +146,11 @@ import {
 import { 
   TokenDto,
   AuthorizationInfoDto,
+  LocationReferencesDto,
+  EnergyContractDto,
   TokenType,
   AllowedType,
-  WhitelistType 
+  WhitelistType
 } from 'ocpi-types/tokens';
 ```
 
@@ -122,9 +160,13 @@ import {
   StartSessionDto,
   StopSessionDto,
   ReserveNowDto,
+  UnlockConnectorDto,
+  CancelReservationDto,
+  CommandResultDto,
   CommandResponseDto,
   CommandType,
-  CommandResponseType 
+  CommandResultType,
+  CommandResponseType
 } from 'ocpi-types/commands';
 ```
 
@@ -134,9 +176,63 @@ import {
   ChargingProfileDto,
   ChargingProfilePeriodDto,
   ActiveChargingProfileDto,
+  ActiveChargingProfileResultDto,
+  ChargingProfileResponseDto,
+  ChargingProfileResultDto,
+  ClearProfileResultDto,
+  SetChargingProfileDto,
   ChargingRateUnit,
-  ChargingProfileResponseType 
+  ChargingProfileResponseType,
+  ChargingProfileResultType
 } from 'ocpi-types/charging-profiles';
+```
+
+### 🌐 Versions & Hub Client Info
+```typescript
+// Versions
+import {
+  EndpointDto,
+  VersionNumber,
+  ModuleId,
+  InterfaceRole
+} from 'ocpi-types/versions';
+
+// Hub Client Info
+import {
+  ClientInfoDto,
+  ConnectionStatus
+} from 'ocpi-types/hubclientinfo';
+```
+
+### 🔑 Credentials
+```typescript
+import {
+  CredentialsDto,
+  CredentialsRoleDto
+} from 'ocpi-types/credentials';
+```
+
+### 🛠️ Common DTOs & Enums
+```typescript
+// Common DTOs
+import {
+  DisplayTextDto,
+  PriceDto
+} from 'ocpi-types';
+
+// Common Enums
+import {
+  Role
+} from 'ocpi-types';
+```
+
+### 🎨 Custom Decorators
+```typescript
+import {
+  IsOcpiDateTime,
+  IsOcpiCiString,
+  IsTime
+} from 'ocpi-types/decorators';
 ```
 
 ## 🎯 Usage Examples
