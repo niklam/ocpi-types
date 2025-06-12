@@ -1,4 +1,4 @@
 import 'reflect-metadata';
 
 // Root exports
-export * from './role.enum';
+export * from './ocpi-response.builder';
