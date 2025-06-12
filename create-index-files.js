@@ -76,7 +76,8 @@ const modules = [
     'src/modules/versions',
     'src/modules/hubclientinfo',
     'src/dtos',
-    'src/enums'
+    'src/enums',
+    'src/utils',
 ];
 
 modules.forEach(dir => {

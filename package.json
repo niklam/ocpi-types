@@ -46,6 +46,11 @@
       "import": "./dist/decorators/index.js",
       "require": "./dist/decorators/index.js"
     },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.js"
+    },
     "./locations": {
       "types": "./dist/modules/locations/index.d.ts",
       "import": "./dist/modules/locations/index.js",
