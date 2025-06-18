@@ -32,6 +32,7 @@ export class StartSessionDto {
    */
   @ValidateNested()
   @Type(() => TokenDto)
+  @Expose()
   token: TokenDto;
 
   /**
