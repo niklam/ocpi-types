@@ -24,8 +24,8 @@ describe('OcpiResponseBuilder', () => {
 
       expect(result).toEqual({
         data: testData,
-        status_code: OcpiStatusCode.SUCCESS_GENERIC,
-        status_message: undefined,
+        statusCode: OcpiStatusCode.SUCCESS_GENERIC,
+        statusMessage: undefined,
         timestamp: mockISOString,
       });
     });
@@ -38,8 +38,8 @@ describe('OcpiResponseBuilder', () => {
 
       expect(result).toEqual({
         data: testData,
-        status_code: OcpiStatusCode.SUCCESS_GENERIC,
-        status_message: customMessage,
+        statusCode: OcpiStatusCode.SUCCESS_GENERIC,
+        statusMessage: customMessage,
         timestamp: mockISOString,
       });
     });
@@ -94,8 +94,8 @@ describe('OcpiResponseBuilder', () => {
       const result = OcpiResponseBuilder.successEmpty();
 
       expect(result).toEqual({
-        status_code: OcpiStatusCode.SUCCESS_GENERIC,
-        status_message: undefined,
+        statusCode: OcpiStatusCode.SUCCESS_GENERIC,
+        statusMessage: undefined,
         timestamp: mockISOString,
       });
     });
@@ -106,23 +106,23 @@ describe('OcpiResponseBuilder', () => {
       const result = OcpiResponseBuilder.successEmpty(customMessage);
 
       expect(result).toEqual({
-        status_code: OcpiStatusCode.SUCCESS_GENERIC,
-        status_message: customMessage,
+        statusCode: OcpiStatusCode.SUCCESS_GENERIC,
+        statusMessage: customMessage,
         timestamp: mockISOString,
       });
     });
 
-    it('should not have data property', () => {
+    it('should have undefined data property', () => {
       const result = OcpiResponseBuilder.successEmpty();
 
-      expect(result).not.toHaveProperty('data');
+      expect(result.data).toBeUndefined();
     });
 
     it('should return OcpiErrorResponse type', () => {
       const result: OcpiErrorResponse = OcpiResponseBuilder.successEmpty();
 
       // This test verifies TypeScript compilation - if it compiles, the typing is correct
-      expect(result.status_code).toBe(OcpiStatusCode.SUCCESS_GENERIC);
+      expect(result.statusCode).toBe(OcpiStatusCode.SUCCESS_GENERIC);
     });
   });
 
@@ -133,8 +133,8 @@ describe('OcpiResponseBuilder', () => {
       const result = OcpiResponseBuilder.error(statusCode);
 
       expect(result).toEqual({
-        status_code: statusCode,
-        status_message: undefined,
+        statusCode: statusCode,
+        statusMessage: undefined,
         timestamp: mockISOString,
       });
     });
@@ -146,8 +146,8 @@ describe('OcpiResponseBuilder', () => {
       const result = OcpiResponseBuilder.error(statusCode, errorMessage);
 
       expect(result).toEqual({
-        status_code: statusCode,
-        status_message: errorMessage,
+        statusCode: statusCode,
+        statusMessage: errorMessage,
         timestamp: mockISOString,
       });
     });
@@ -172,8 +172,8 @@ describe('OcpiResponseBuilder', () => {
       testCases.forEach(({ code, description }) => {
         const result = OcpiResponseBuilder.error(code, description);
 
-        expect(result.status_code).toBe(code);
-        expect(result.status_message).toBe(description);
+        expect(result.statusCode).toBe(code);
+        expect(result.statusMessage).toBe(description);
       });
     });
 
@@ -182,21 +182,21 @@ describe('OcpiResponseBuilder', () => {
       const result1 = OcpiResponseBuilder.error(2001, 'Invalid parameters');
       const result2 = OcpiResponseBuilder.error(3000, 'Server error');
 
-      expect(result1.status_code).toBe(2001);
-      expect(result2.status_code).toBe(3000);
+      expect(result1.statusCode).toBe(2001);
+      expect(result2.statusCode).toBe(3000);
     });
 
-    it('should not have data property', () => {
+    it('should have undefined data property', () => {
       const result = OcpiResponseBuilder.error(OcpiStatusCode.SERVER_ERROR_GENERIC, 'Bad request');
 
-      expect(result).not.toHaveProperty('data');
+      expect(result.data).toBeUndefined();
     });
 
     it('should return OcpiErrorResponse type', () => {
       const result: OcpiErrorResponse = OcpiResponseBuilder.error(OcpiStatusCode.SERVER_ERROR_GENERIC);
 
       // This test verifies TypeScript compilation - if it compiles, the typing is correct
-      expect(result.status_code).toBe(3000);
+      expect(result.statusCode).toBe(3000);
     });
   });
 
@@ -205,10 +205,10 @@ describe('OcpiResponseBuilder', () => {
       const successResult = OcpiResponseBuilder.success({ data: 'test' });
       const emptyResult = OcpiResponseBuilder.successEmpty();
 
-      expect(successResult.status_code).toBe(OcpiStatusCode.SUCCESS_GENERIC);
-      expect(successResult.status_code).toBe(1000);
-      expect(emptyResult.status_code).toBe(OcpiStatusCode.SUCCESS_GENERIC);
-      expect(emptyResult.status_code).toBe(1000);
+      expect(successResult.statusCode).toBe(OcpiStatusCode.SUCCESS_GENERIC);
+      expect(successResult.statusCode).toBe(1000);
+      expect(emptyResult.statusCode).toBe(OcpiStatusCode.SUCCESS_GENERIC);
+      expect(emptyResult.statusCode).toBe(1000);
     });
 
     it('should accept all valid OCPI error status codes', () => {
@@ -238,16 +238,16 @@ describe('OcpiResponseBuilder', () => {
         OcpiStatusCode.CLIENT_ERROR_INVALID_OR_MISSING_PARAMETERS,
         'Required field "connector_id" is missing',
       );
-      expect(invalidParamsError.status_code).toBe(2001);
+      expect(invalidParamsError.statusCode).toBe(2001);
 
       const unknownTokenError = OcpiResponseBuilder.error(
         OcpiStatusCode.CLIENT_ERROR_UNKNOWN_TOKEN,
         'Token not found in database',
       );
-      expect(unknownTokenError.status_code).toBe(2004);
+      expect(unknownTokenError.statusCode).toBe(2004);
 
       const serverError = OcpiResponseBuilder.error(OcpiStatusCode.SERVER_ERROR_GENERIC, 'Database connection failed');
-      expect(serverError.status_code).toBe(3000);
+      expect(serverError.statusCode).toBe(3000);
     });
   });
 
@@ -279,9 +279,9 @@ describe('OcpiResponseBuilder', () => {
       const emptyResult = OcpiResponseBuilder.successEmpty('');
       const errorResult = OcpiResponseBuilder.error(OcpiStatusCode.SERVER_ERROR_GENERIC, '');
 
-      expect(successResult.status_message).toBe('');
-      expect(emptyResult.status_message).toBe('');
-      expect(errorResult.status_message).toBe('');
+      expect(successResult.statusMessage).toBe('');
+      expect(emptyResult.statusMessage).toBe('');
+      expect(errorResult.statusMessage).toBe('');
     });
 
     it('should handle very long messages', () => {
@@ -289,8 +289,8 @@ describe('OcpiResponseBuilder', () => {
 
       const result = OcpiResponseBuilder.error(OcpiStatusCode.SERVER_ERROR_GENERIC, longMessage);
 
-      expect(result.status_message).toBe(longMessage);
-      expect(result.status_message?.length).toBe(1000);
+      expect(result.statusMessage).toBe(longMessage);
+      expect(result.statusMessage?.length).toBe(1000);
     });
 
     it('should handle special characters in messages', () => {
@@ -298,19 +298,19 @@ describe('OcpiResponseBuilder', () => {
 
       const result = OcpiResponseBuilder.success({ test: true }, specialMessage);
 
-      expect(result.status_message).toBe(specialMessage);
+      expect(result.statusMessage).toBe(specialMessage);
     });
 
     it('should handle zero as status code', () => {
       const result = OcpiResponseBuilder.error(0, 'Zero status code');
 
-      expect(result.status_code).toBe(0);
+      expect(result.statusCode).toBe(0);
     });
 
     it('should handle negative status codes', () => {
       const result = OcpiResponseBuilder.error(-1, 'Negative status code');
 
-      expect(result.status_code).toBe(-1);
+      expect(result.statusCode).toBe(-1);
     });
   });
 });
