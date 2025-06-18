@@ -1,3 +1,6 @@
+import { Expose } from 'class-transformer';
+import { IsOptional, IsNumber, IsString } from 'class-validator';
+
 /**
  * OCPI Response DTO
  *
@@ -8,13 +11,15 @@
  * - A string (for simple responses)
  * - undefined (for error responses or operations with no return data)
  */
-export interface OcpiResponse<T = any> {
+export class OcpiResponse<T = any> {
   /**
    * Contains the actual response data object or list of objects from each request.
    * - Array when cardinality is * or +
    * - Single object when cardinality is 1 or ?
    * - May be omitted for error responses or operations with no return data
    */
+  @IsOptional()
+  @Expose()
   data?: T;
 
   /**
@@ -23,16 +28,23 @@ export interface OcpiResponse<T = any> {
    *
    * @see OcpiStatusCodes
    */
-  status_code: number;
+  @IsNumber()
+  @Expose({ name: 'status_code' })
+  statusCode: number;
 
   /**
    * Optional status message which may help when debugging.
    */
-  status_message?: string;
+  @IsOptional()
+  @IsString()
+  @Expose({ name: 'status_message' })
+  statusMessage?: string;
 
   /**
    * The time this message was generated (ISO 8601 format).
    */
+  @IsString()
+  @Expose()
   timestamp: string;
 }
 
