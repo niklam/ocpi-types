@@ -1,3 +1,5 @@
+import { Expose } from 'class-transformer';
+
 // Enum imports
 import { ChargingProfileResultType } from '../enums/charging-profile-result-type.enum';
 
@@ -9,5 +11,6 @@ export class ClearProfileResultDto {
   /**
    * The EVSE will indicate if it was able to process the removal of the charging profile (ClearChargingProfile).
    */
+  @Expose()
   result: ChargingProfileResultType;
 }
