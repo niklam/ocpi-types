@@ -1,6 +1,6 @@
 import { OcpiResponseBuilder } from './ocpi-response.builder';
 import { OcpiStatusCode } from '../enums/status-codes.enum';
-import { OcpiErrorResponse, OcpiResponse } from '../dtos/ocpi-response.dto';
+import { OcpiEmptyResponse, OcpiErrorResponse, OcpiResponse } from '../dtos/ocpi-response.dto';
 
 describe('OcpiResponseBuilder', () => {
   // Mock Date to have predictable timestamps in tests
@@ -118,8 +118,8 @@ describe('OcpiResponseBuilder', () => {
       expect(result.data).toBeUndefined();
     });
 
-    it('should return OcpiErrorResponse type', () => {
-      const result: OcpiErrorResponse = OcpiResponseBuilder.successEmpty();
+    it('should return OcpiEmptyResponse type', () => {
+      const result: OcpiEmptyResponse = OcpiResponseBuilder.successEmpty();
 
       // This test verifies TypeScript compilation - if it compiles, the typing is correct
       expect(result.statusCode).toBe(OcpiStatusCode.SUCCESS_GENERIC);

@@ -51,19 +51,19 @@ export class OcpiResponse<T = any> {
 /**
  * Response for endpoints that return a single object
  */
-export type OcpiSingleResponse<T> = OcpiResponse<T>;
+export class OcpiSingleResponse<T> extends OcpiResponse<T> {}
 
 /**
  * Response for endpoints that return an array of objects
  */
-export type OcpiListResponse<T> = OcpiResponse<T[]>;
+export class OcpiListResponse<T> extends OcpiResponse<T[]> {}
 
 /**
  * Response for endpoints that return no data (e.g., DELETE, some POST/PUT operations)
  */
-export type OcpiEmptyResponse = OcpiResponse<undefined>;
+export class OcpiEmptyResponse extends OcpiResponse<undefined> {}
 
 /**
  * Response for error cases where no data is returned
  */
-export type OcpiErrorResponse = OcpiResponse<undefined>;
+export class OcpiErrorResponse extends OcpiResponse<undefined> {}

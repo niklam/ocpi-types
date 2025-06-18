@@ -1,5 +1,5 @@
 import { OcpiStatusCode } from '../enums/status-codes.enum';
-import { OcpiErrorResponse, OcpiResponse } from '../dtos/ocpi-response.dto';
+import { OcpiEmptyResponse, OcpiErrorResponse, OcpiResponse } from '../dtos/ocpi-response.dto';
 
 export class OcpiResponseBuilder {
   /**
@@ -17,8 +17,8 @@ export class OcpiResponseBuilder {
   /**
    * Create a successful response with no data
    */
-  static successEmpty(message?: string): OcpiErrorResponse {
-    const response = new OcpiErrorResponse();
+  static successEmpty(message?: string): OcpiEmptyResponse {
+    const response = new OcpiEmptyResponse();
     response.statusCode = OcpiStatusCode.SUCCESS_GENERIC;
     response.statusMessage = message;
     response.timestamp = new Date().toISOString();
