@@ -53,6 +53,7 @@ export class TariffDto {
    */
   @IsOcpiCiString()
   @MaxLength(36)
+  @Expose()
   id: string;
 
   /**
@@ -60,6 +61,7 @@ export class TariffDto {
    */
   @IsString()
   @MaxLength(3)
+  @Expose()
   currency: string;
 
   /**
@@ -67,6 +69,7 @@ export class TariffDto {
    * When omitted, this tariff is valid for all sessions.
    */
   @IsOptional()
+  @Expose()
   type?: TariffType;
 
   /**
@@ -83,9 +86,12 @@ export class TariffDto {
    * URL to a web page that contains an explanation of the tariff information in human readable form.
    */
   @IsOptional()
-  @IsUrl({}, {
-    message: 'tariffAltUrl must be a valid URL',
-  })
+  @IsUrl(
+    {},
+    {
+      message: 'tariffAltUrl must be a valid URL',
+    },
+  )
   @Expose({ name: 'tariff_alt_url' })
   tariffAltUrl?: string;
 
@@ -116,6 +122,7 @@ export class TariffDto {
   @ArrayMinSize(1)
   @ValidateNested({ each: true })
   @Type(() => TariffElementDto)
+  @Expose()
   elements: TariffElementDto[];
 
   /**

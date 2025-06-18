@@ -11,17 +11,22 @@ export class PriceComponentDto {
   /**
    * The dimension that is being priced.
    */
+  @Expose()
   type: TariffDimensionType;
 
   /**
    * Price per unit (excl. VAT) for this dimension.
    */
-  @IsNumber({}, {
-    message: 'price must be a number'
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'price must be a number',
+    },
+  )
   @Min(0, {
-    message: 'price must be at least 0'
+    message: 'price must be at least 0',
   })
+  @Expose()
   price: number;
 
   /**
@@ -29,12 +34,16 @@ export class PriceComponentDto {
    * Not providing a VAT is different from 0% VAT, which would be a value of 0.0 here.
    */
   @IsOptional()
-  @IsNumber({}, {
-    message: 'vat must be a number'
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'vat must be a number',
+    },
+  )
   @Min(0, {
-    message: 'vat must be at least 0'
+    message: 'vat must be at least 0',
   })
+  @Expose()
   vat?: number;
 
   /**
@@ -44,10 +53,10 @@ export class PriceComponentDto {
    * If 6 minutes were consumed, 10 minutes (2 blocks of step_size) will be billed.
    */
   @IsInt({
-    message: 'stepSize must be an integer'
+    message: 'stepSize must be an integer',
   })
   @Min(1, {
-    message: 'stepSize must be at least 1'
+    message: 'stepSize must be at least 1',
   })
   @Expose({ name: 'step_size' })
   stepSize: number;

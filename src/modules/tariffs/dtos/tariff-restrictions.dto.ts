@@ -61,9 +61,12 @@ export class TariffRestrictionsDto {
    * Minimum consumed energy in kWh, for example 20, valid from this amount of energy (inclusive) being used.
    */
   @IsOptional()
-  @IsNumber({}, {
-    message: 'minKwh must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'minKwh must be a number',
+    },
+  )
   @Min(0, {
     message: 'minKwh must be at least 0',
   })
@@ -74,9 +77,12 @@ export class TariffRestrictionsDto {
    * Maximum consumed energy in kWh, for example 50, valid until this amount of energy (exclusive) being used.
    */
   @IsOptional()
-  @IsNumber({}, {
-    message: 'maxKwh must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'maxKwh must be a number',
+    },
+  )
   @Min(0, {
     message: 'maxKwh must be at least 0',
   })
@@ -87,9 +93,12 @@ export class TariffRestrictionsDto {
    * Sum of the minimum current (in Amperes) over all phases, for example 5. When the EV is charging with more than, or equal to, the defined amount of current, this TariffElement is/becomes active.
    */
   @IsOptional()
-  @IsNumber({}, {
-    message: 'minCurrent must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'minCurrent must be a number',
+    },
+  )
   @Min(0, {
     message: 'minCurrent must be at least 0',
   })
@@ -100,9 +109,12 @@ export class TariffRestrictionsDto {
    * Sum of the maximum current (in Amperes) over all phases, for example 20. When the EV is charging with less than the defined amount of current, this TariffElement becomes/is active.
    */
   @IsOptional()
-  @IsNumber({}, {
-    message: 'maxCurrent must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'maxCurrent must be a number',
+    },
+  )
   @Min(0, {
     message: 'maxCurrent must be at least 0',
   })
@@ -113,9 +125,12 @@ export class TariffRestrictionsDto {
    * Minimum power in kW, for example 5. When the EV is charging with more than, or equal to, the defined amount of power, this TariffElement is/becomes active.
    */
   @IsOptional()
-  @IsNumber({}, {
-    message: 'minPower must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'minPower must be a number',
+    },
+  )
   @Min(0, {
     message: 'minPower must be at least 0',
   })
@@ -126,9 +141,12 @@ export class TariffRestrictionsDto {
    * Maximum power in kW, for example 20. When the EV is charging with less than the defined amount of power, this TariffElement becomes/is active.
    */
   @IsOptional()
-  @IsNumber({}, {
-    message: 'maxPower must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'maxPower must be a number',
+    },
+  )
   @Min(0, {
     message: 'maxPower must be at least 0',
   })
@@ -173,5 +191,6 @@ export class TariffRestrictionsDto {
    * When this field is present, the TariffElement describes reservation costs. A reservation starts when the reservation is made, and ends when the driver starts charging on the reserved EVSE/Location, or when the reservation expires.
    */
   @IsOptional()
+  @Expose()
   reservation?: ReservationRestrictionType;
 }
