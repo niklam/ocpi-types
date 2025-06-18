@@ -12,7 +12,8 @@ TypeScript DTOs (Data Transfer Objects) and enums for the **OCPI 2.2.1** (Open C
 - 🎯 **Complete OCPI 2.2.1 coverage** - All DTOs and enums from the specification
 - 🛡️ **Type-safe** - Full TypeScript support with strict typing
 - ✅ **Validation ready** - Built with class-validator decorators
-- 🔄 **Transformation support** - class-transformer decorators for JSON mapping
+- 🔄 **Consistent serialization** - Explicit @Expose() decorators on all fields
+- 🏗️ **Enhanced response system** - Class-based response types for better instantiation
 - 🏗️ **NestJS compatible** - Works seamlessly with NestJS applications
 - 📚 **Well documented** - Comprehensive JSDoc comments
 - 🧪 **Thoroughly tested** - Extensive test coverage
@@ -226,6 +227,30 @@ import {
 } from 'ocpi-types';
 ```
 
+### 📤 OCPI Response System
+```typescript
+// Response classes (v2.0.0+)
+import {
+  OcpiResponse,
+  OcpiSingleResponse,
+  OcpiListResponse,
+  OcpiEmptyResponse,
+  OcpiErrorResponse,
+  OcpiResponseBuilder
+} from 'ocpi-types';
+
+// Create responses using the builder (recommended)
+const successResponse = OcpiResponseBuilder.success(data, 'Operation successful');
+const emptyResponse = OcpiResponseBuilder.successEmpty('No content');
+const errorResponse = OcpiResponseBuilder.error(2001, 'Invalid parameters');
+
+// Or instantiate classes directly
+const customResponse = new OcpiResponse<LocationDto>();
+customResponse.data = locationData;
+customResponse.statusCode = 1000;
+customResponse.timestamp = new Date().toISOString();
+```
+
 ### 🎨 Custom Decorators
 ```typescript
 import {
@@ -237,17 +262,28 @@ import {
 
 ## 🎯 Usage Examples
 
-### NestJS Controller
+### NestJS Controller with OCPI Responses
 ```typescript
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 import { LocationDto } from 'ocpi-types/locations';
+import { OcpiResponseBuilder, OcpiSingleResponse, OcpiListResponse } from 'ocpi-types';
 
 @Controller('ocpi/2.2.1/locations')
 export class LocationsController {
   @Post()
-  async createLocation(@Body() locationDto: LocationDto) {
-    // locationDto is automatically validated and transformed
-    return this.locationsService.create(locationDto);
+  async createLocation(@Body() locationDto: LocationDto): Promise<OcpiSingleResponse<LocationDto>> {
+    try {
+      const location = await this.locationsService.create(locationDto);
+      return OcpiResponseBuilder.success(location, 'Location created successfully');
+    } catch (error) {
+      return OcpiResponseBuilder.error(2001, 'Failed to create location');
+    }
+  }
+
+  @Get()
+  async getLocations(): Promise<OcpiListResponse<LocationDto>> {
+    const locations = await this.locationsService.findAll();
+    return OcpiResponseBuilder.success(locations, 'Locations retrieved successfully');
   }
 }
 ```
@@ -329,6 +365,75 @@ class MyDto {
   startTime: string; // Must be: 09:30, 23:59, etc.
 }
 ```
+
+### Consistent Serialization (v2.0.0+)
+```typescript
+import { plainToInstance, instanceToPlain } from 'class-transformer';
+import { LocationDto } from 'ocpi-types/locations';
+
+// All DTOs now have explicit @Expose() decorators
+// Serialization is consistent regardless of configuration
+const locationData = {
+  country_code: 'DE',
+  party_id: 'GEF',
+  id: 'LOC001',
+  // ... other fields
+};
+
+const location = plainToInstance(LocationDto, locationData);
+const serialized = instanceToPlain(location);
+
+// Always produces consistent snake_case output:
+// {
+//   "country_code": "DE",
+//   "party_id": "GEF",
+//   "id": "LOC001",
+//   ...
+// }
+```
+
+## 🔄 Migration from v1.x to v2.0.0
+
+### Breaking Changes
+**OcpiResponse is now a class** (was interface):
+```typescript
+// ❌ v1.x - Interface usage
+const response: OcpiResponse<Data> = {
+  data: myData,
+  status_code: 1000,
+  timestamp: new Date().toISOString()
+};
+
+// ✅ v2.0.0 - Class usage (recommended)
+const response = OcpiResponseBuilder.success(myData);
+
+// ✅ v2.0.0 - Direct instantiation
+const response = new OcpiResponse<Data>();
+response.data = myData;
+response.statusCode = 1000;
+response.timestamp = new Date().toISOString();
+```
+
+**Response types are now classes** (were type aliases):
+```typescript
+// ❌ v1.x - Plain object
+const errorResponse: OcpiErrorResponse = {
+  status_code: 2001,
+  status_message: 'Invalid data',
+  timestamp: new Date().toISOString()
+};
+
+// ✅ v2.0.0 - Class instantiation
+const errorResponse = new OcpiErrorResponse();
+// OR (recommended)
+const errorResponse = OcpiResponseBuilder.error(2001, 'Invalid data');
+```
+
+### No Action Required For:
+- ✅ **DTO usage** - All DTOs work exactly the same
+- ✅ **Validation** - All validation decorators unchanged
+- ✅ **Serialization** - Output format is identical (now more consistent)
+- ✅ **Imports** - All import paths remain the same
 
 ## 🔧 Configuration
 
