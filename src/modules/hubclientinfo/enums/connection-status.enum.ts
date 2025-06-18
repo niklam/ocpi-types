@@ -20,5 +20,5 @@ export enum ConnectionStatus {
   /**
    * Party is now longer active, will never connect anymore.
    */
-  SUSPENDED = 'SUSPENDED'
+  SUSPENDED = 'SUSPENDED',
 }

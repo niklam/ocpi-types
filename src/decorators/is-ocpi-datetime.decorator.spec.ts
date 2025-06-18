@@ -579,15 +579,15 @@ describe('IsOcpiDateTime Decorator', () => {
 
     it('should accept various OCPI DateTime formats', async () => {
       const timestamps = [
-        '2015-06-29T20:39:09Z',       // Example 1 from OCPI spec
-        '2015-06-29T20:39:09',        // Example 2 from OCPI spec
-        '2016-12-29T17:45:09.2Z',     // Example 3 from OCPI spec
-        '2016-12-29T17:45:09.2',      // Example 4 from OCPI spec
-        '2018-01-01T01:08:01.123Z',   // Example 5 from OCPI spec
-        '2018-01-01T01:08:01.123',    // Example 6 from OCPI spec
-        '2018-01-01T01:08:01+03:00',  // With timezone offset
-        '2023-12-25T10:30:45-05:00',  // Negative timezone
-        '2023-12-25T10:30:45+00:00',  // UTC as offset
+        '2015-06-29T20:39:09Z', // Example 1 from OCPI spec
+        '2015-06-29T20:39:09', // Example 2 from OCPI spec
+        '2016-12-29T17:45:09.2Z', // Example 3 from OCPI spec
+        '2016-12-29T17:45:09.2', // Example 4 from OCPI spec
+        '2018-01-01T01:08:01.123Z', // Example 5 from OCPI spec
+        '2018-01-01T01:08:01.123', // Example 6 from OCPI spec
+        '2018-01-01T01:08:01+03:00', // With timezone offset
+        '2023-12-25T10:30:45-05:00', // Negative timezone
+        '2023-12-25T10:30:45+00:00', // UTC as offset
       ];
 
       for (const timestamp of timestamps) {
@@ -608,8 +608,8 @@ describe('IsOcpiDateTime Decorator', () => {
         return dto;
       });
 
-      const results = await Promise.all(dtos.map(dto => validate(dto)));
-      results.forEach(errors => {
+      const results = await Promise.all(dtos.map((dto) => validate(dto)));
+      results.forEach((errors) => {
         expect(errors).toHaveLength(0);
       });
     });

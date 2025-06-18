@@ -15,5 +15,5 @@ export enum ChargingProfileResultType {
   /**
    * No Charging Profile(s) were found by the EVSE matching the request.
    */
-  UNKNOWN = 'UNKNOWN'
+  UNKNOWN = 'UNKNOWN',
 }

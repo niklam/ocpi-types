@@ -28,5 +28,5 @@ export enum SessionStatus {
    * The session is started due to a reservation, charging has not yet started.
    * The session might never become an *active* session.
    */
-  RESERVATION = 'RESERVATION'
+  RESERVATION = 'RESERVATION',
 }

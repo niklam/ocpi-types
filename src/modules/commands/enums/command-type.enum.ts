@@ -25,5 +25,5 @@ export enum CommandType {
   /**
    * Request the Charge Point to unlock the connector (if applicable). This functionality is for help desk operators only!
    */
-  UNLOCK_CONNECTOR = 'UNLOCK_CONNECTOR'
+  UNLOCK_CONNECTOR = 'UNLOCK_CONNECTOR',
 }

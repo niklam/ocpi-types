@@ -72,5 +72,5 @@ export enum Capability {
   /**
    * Connectors have mechanical lock that can be requested by the eMSP to be unlocked.
    */
-  UNLOCK_CAPABLE = 'UNLOCK_CAPABLE'
+  UNLOCK_CAPABLE = 'UNLOCK_CAPABLE',
 }

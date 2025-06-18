@@ -25,5 +25,5 @@ export enum PowerType {
   /**
    * Direct Current.
    */
-  DC = 'DC'
+  DC = 'DC',
 }

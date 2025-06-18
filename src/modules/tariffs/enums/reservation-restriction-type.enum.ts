@@ -15,5 +15,5 @@ export enum ReservationRestrictionType {
    * Used in Tariff Elements to describe costs for a reservation that expires
    * (i.e. driver does not start a charging session before expiry_date of the reservation).
    */
-  RESERVATION_EXPIRES = 'RESERVATION_EXPIRES'
+  RESERVATION_EXPIRES = 'RESERVATION_EXPIRES',
 }

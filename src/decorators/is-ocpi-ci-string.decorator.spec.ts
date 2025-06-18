@@ -446,8 +446,8 @@ describe('IsOcpiCiString Decorator', () => {
         return dto;
       });
 
-      const results = await Promise.all(dtos.map(dto => validate(dto)));
-      results.forEach(errors => {
+      const results = await Promise.all(dtos.map((dto) => validate(dto)));
+      results.forEach((errors) => {
         expect(errors).toHaveLength(0);
       });
     });

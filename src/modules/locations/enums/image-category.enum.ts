@@ -36,5 +36,5 @@ export enum ImageCategory {
   /**
    * Logo of the charge point owner, for example a local store, to be displayed in the EVSEs detailed information view.
    */
-  OWNER = 'OWNER'
+  OWNER = 'OWNER',
 }

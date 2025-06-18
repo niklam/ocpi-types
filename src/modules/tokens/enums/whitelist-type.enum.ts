@@ -24,5 +24,5 @@ export enum WhitelistType {
   /**
    * Whitelisting is forbidden, only realtime authorization is allowed. CPO shall always send a realtime authorization for any use of this Token to the eMSP.
    */
-  NEVER = 'NEVER'
+  NEVER = 'NEVER',
 }

@@ -17,7 +17,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '00:00';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(0);
     });
 
@@ -26,7 +26,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '00:01';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(0);
     });
 
@@ -35,7 +35,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '23:59';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(0);
     });
 
@@ -44,7 +44,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '12:00';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(0);
     });
 
@@ -53,7 +53,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '09:30';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(0);
     });
 
@@ -62,15 +62,36 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '18:45';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(0);
     });
 
     it('should validate all valid hour boundaries', async () => {
       const validHours = [
-        '00', '01', '02', '03', '04', '05', '06', '07', '08', '09',
-        '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
-        '20', '21', '22', '23',
+        '00',
+        '01',
+        '02',
+        '03',
+        '04',
+        '05',
+        '06',
+        '07',
+        '08',
+        '09',
+        '10',
+        '11',
+        '12',
+        '13',
+        '14',
+        '15',
+        '16',
+        '17',
+        '18',
+        '19',
+        '20',
+        '21',
+        '22',
+        '23',
       ];
 
       for (const hour of validHours) {
@@ -78,22 +99,20 @@ describe('IsTime Decorator', () => {
         testInstance.timeValue = `${hour}:30`;
 
         const errors = await validate(testInstance);
-        const timeErrors = errors.filter(error => error.property === 'timeValue');
+        const timeErrors = errors.filter((error) => error.property === 'timeValue');
         expect(timeErrors).toHaveLength(0);
       }
     });
 
     it('should validate all valid minute boundaries', async () => {
-      const validMinutes = [
-        '00', '01', '15', '30', '45', '59',
-      ];
+      const validMinutes = ['00', '01', '15', '30', '45', '59'];
 
       for (const minute of validMinutes) {
         const testInstance = new TestTimeClass();
         testInstance.timeValue = `12:${minute}`;
 
         const errors = await validate(testInstance);
-        const timeErrors = errors.filter(error => error.property === 'timeValue');
+        const timeErrors = errors.filter((error) => error.property === 'timeValue');
         expect(timeErrors).toHaveLength(0);
       }
     });
@@ -105,7 +124,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '24:00';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
       expect(timeErrors[0].property).toBe('timeValue');
     });
@@ -115,7 +134,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '25:00';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -124,7 +143,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '9:00';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -133,7 +152,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '-1:00';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -142,7 +161,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '123:00';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
   });
@@ -153,7 +172,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '12:60';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -162,7 +181,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '12:99';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -171,7 +190,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '12:5';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -180,7 +199,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '12:-5';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -189,7 +208,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '12:123';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
   });
@@ -200,7 +219,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '1200';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -209,7 +228,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '12.00';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -218,7 +237,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '12/00';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -227,7 +246,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '12:00:00';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -236,7 +255,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '12:3a';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -245,7 +264,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '12:@0';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -254,7 +273,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -263,7 +282,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = '   ';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -272,7 +291,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = ' 12:00 ';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
   });
@@ -283,7 +302,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = null as any;
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -292,7 +311,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = undefined as any;
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
   });
@@ -303,7 +322,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = 1200 as any;
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -312,7 +331,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = true as any;
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -321,7 +340,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = { hour: 12, minute: 0 } as any;
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
 
@@ -330,7 +349,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = [12, 0] as any;
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
     });
   });
@@ -341,7 +360,7 @@ describe('IsTime Decorator', () => {
       testInstance.customMessageTime = 'invalid-time';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'customMessageTime');
+      const timeErrors = errors.filter((error) => error.property === 'customMessageTime');
       expect(timeErrors).toHaveLength(1);
       expect(timeErrors[0].constraints).toEqual(
         expect.objectContaining({
@@ -355,7 +374,7 @@ describe('IsTime Decorator', () => {
       testInstance.timeValue = 'invalid-time';
 
       const errors = await validate(testInstance);
-      const timeErrors = errors.filter(error => error.property === 'timeValue');
+      const timeErrors = errors.filter((error) => error.property === 'timeValue');
       expect(timeErrors).toHaveLength(1);
       expect(timeErrors[0].constraints).toHaveProperty('isTime');
     });
@@ -381,44 +400,33 @@ describe('IsTime Decorator', () => {
         testInstance.timeValue = time;
 
         const errors = await validate(testInstance);
-        const timeErrors = errors.filter(error => error.property === 'timeValue');
+        const timeErrors = errors.filter((error) => error.property === 'timeValue');
         expect(timeErrors).toHaveLength(0);
       }
     });
 
     it('should reject 12-hour format times (AM/PM)', async () => {
-      const invalidTimes = [
-        '12:00 AM',
-        '12:00 PM',
-        '01:30 am',
-        '11:59 pm',
-        '12:00AM',
-        '12:00PM',
-      ];
+      const invalidTimes = ['12:00 AM', '12:00 PM', '01:30 am', '11:59 pm', '12:00AM', '12:00PM'];
 
       for (const time of invalidTimes) {
         const testInstance = new TestTimeClass();
         testInstance.timeValue = time;
 
         const errors = await validate(testInstance);
-        const timeErrors = errors.filter(error => error.property === 'timeValue');
+        const timeErrors = errors.filter((error) => error.property === 'timeValue');
         expect(timeErrors).toHaveLength(1);
       }
     });
 
     it('should reject times with seconds', async () => {
-      const timesWithSeconds = [
-        '12:00:00',
-        '09:30:45',
-        '23:59:59',
-      ];
+      const timesWithSeconds = ['12:00:00', '09:30:45', '23:59:59'];
 
       for (const time of timesWithSeconds) {
         const testInstance = new TestTimeClass();
         testInstance.timeValue = time;
 
         const errors = await validate(testInstance);
-        const timeErrors = errors.filter(error => error.property === 'timeValue');
+        const timeErrors = errors.filter((error) => error.property === 'timeValue');
         expect(timeErrors).toHaveLength(1);
       }
     });

@@ -84,5 +84,5 @@ export enum CdrDimensionType {
    * Time charging during this ChargingPeriod: defined in hours, default step_size multiplier is 1 second.
    * Session Only: No
    */
-  TIME = 'TIME'
+  TIME = 'TIME',
 }

@@ -25,5 +25,5 @@ export enum AllowedType {
   /**
    * Token is valid, but is not allowed to charge at the given location.
    */
-  NOT_ALLOWED = 'NOT_ALLOWED'
+  NOT_ALLOWED = 'NOT_ALLOWED',
 }

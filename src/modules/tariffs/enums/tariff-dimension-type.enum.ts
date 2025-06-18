@@ -21,5 +21,5 @@ export enum TariffDimensionType {
    * Time charging: defined in hours, step_size multiplier: 1 second
    * Can also be used in combination with a RESERVATION restriction to describe the price of the reservation time.
    */
-  TIME = 'TIME'
+  TIME = 'TIME',
 }

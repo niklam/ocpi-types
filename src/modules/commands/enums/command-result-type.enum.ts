@@ -45,5 +45,5 @@ export enum CommandResultType {
   /**
    * The Reservation in the requested command is not known by this Charge Point.
    */
-  UNKNOWN_RESERVATION = 'UNKNOWN_RESERVATION'
+  UNKNOWN_RESERVATION = 'UNKNOWN_RESERVATION',
 }

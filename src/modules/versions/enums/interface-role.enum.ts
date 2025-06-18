@@ -10,5 +10,5 @@ export enum InterfaceRole {
   /**
    * Receiver Interface implementation. Interface implemented by the receiver of data, so the Sender/owner can Push information to the Receiver.
    */
-  RECEIVER = 'RECEIVER'
+  RECEIVER = 'RECEIVER',
 }

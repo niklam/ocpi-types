@@ -6,7 +6,7 @@ import { registerDecorator, ValidationArguments, ValidationOptions } from 'class
 const PRINTABLE_ASCII_REGEX = /^[\x20-\x7E]*$/;
 
 export function IsOcpiCiString(validationOptions?: ValidationOptions) {
-  return function(object: Object, propertyName: string) {
+  return function (object: Object, propertyName: string) {
     registerDecorator({
       name: 'isOcpiCiString',
       target: object.constructor,
