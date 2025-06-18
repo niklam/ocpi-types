@@ -34,11 +34,13 @@ export class CdrTokenDto {
    */
   @IsOcpiCiString()
   @MaxLength(36)
+  @Expose()
   uid: string;
 
   /**
    * Type of the token.
    */
+  @Expose()
   type: TokenType;
 
   /**

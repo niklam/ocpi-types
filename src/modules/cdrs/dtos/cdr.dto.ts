@@ -60,6 +60,7 @@ export class CdrDto {
    */
   @IsOcpiCiString()
   @MaxLength(39)
+  @Expose()
   id: string;
 
   /**
@@ -134,6 +135,7 @@ export class CdrDto {
    */
   @IsString()
   @MaxLength(3)
+  @Expose()
   currency: string;
 
   /**
@@ -143,6 +145,7 @@ export class CdrDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => TariffDto)
+  @Expose()
   tariffs?: TariffDto[];
 
   /**
@@ -185,9 +188,12 @@ export class CdrDto {
   /**
    * Total energy charged, in kWh.
    */
-  @IsNumber({}, {
-    message: 'totalEnergy must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'totalEnergy must be a number',
+    },
+  )
   @Min(0, {
     message: 'totalEnergy must be at least 0',
   })
@@ -206,9 +212,12 @@ export class CdrDto {
   /**
    * Total duration of the charging session (including the duration of charging and not charging), in hours.
    */
-  @IsNumber({}, {
-    message: 'totalTime must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'totalTime must be a number',
+    },
+  )
   @Min(0, {
     message: 'totalTime must be at least 0',
   })
@@ -228,9 +237,12 @@ export class CdrDto {
    * Total duration of the charging session where the EV was not charging (no energy was transferred between EVSE and EV), in hours.
    */
   @IsOptional()
-  @IsNumber({}, {
-    message: 'totalParkingTime must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'totalParkingTime must be a number',
+    },
+  )
   @Min(0, {
     message: 'totalParkingTime must be at least 0',
   })
@@ -261,6 +273,7 @@ export class CdrDto {
   @IsOptional()
   @IsString()
   @MaxLength(255)
+  @Expose()
   remark?: string;
 
   /**
@@ -278,6 +291,7 @@ export class CdrDto {
    */
   @IsOptional()
   @IsBoolean()
+  @Expose()
   credit?: boolean;
 
   /**

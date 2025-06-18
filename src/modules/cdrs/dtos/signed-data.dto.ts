@@ -52,5 +52,6 @@ export class SignedDataDto {
   @IsOptional()
   @IsString()
   @MaxLength(512)
+  @Expose()
   url?: string;
 }

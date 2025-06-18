@@ -20,6 +20,7 @@ export class CdrLocationDto {
    */
   @IsOcpiCiString()
   @MaxLength(36)
+  @Expose()
   id: string;
 
   /**
@@ -28,6 +29,7 @@ export class CdrLocationDto {
   @IsOptional()
   @IsString()
   @MaxLength(255)
+  @Expose()
   name?: string;
 
   /**
@@ -35,6 +37,7 @@ export class CdrLocationDto {
    */
   @IsString()
   @MaxLength(45)
+  @Expose()
   address: string;
 
   /**
@@ -42,6 +45,7 @@ export class CdrLocationDto {
    */
   @IsString()
   @MaxLength(45)
+  @Expose()
   city: string;
 
   /**
@@ -60,6 +64,7 @@ export class CdrLocationDto {
   @IsOptional()
   @IsString()
   @MaxLength(20)
+  @Expose()
   state?: string;
 
   /**
@@ -67,6 +72,7 @@ export class CdrLocationDto {
    */
   @IsString()
   @MaxLength(3)
+  @Expose()
   country: string;
 
   /**
@@ -74,6 +80,7 @@ export class CdrLocationDto {
    */
   @ValidateNested()
   @Type(() => GeoLocationDto)
+  @Expose()
   coordinates: GeoLocationDto;
 
   /**
