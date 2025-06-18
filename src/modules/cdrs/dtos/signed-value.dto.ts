@@ -16,6 +16,7 @@ export class SignedValueDto {
    */
   @IsOcpiCiString()
   @MaxLength(32)
+  @Expose()
   nature: string;
 
   /**

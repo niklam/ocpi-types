@@ -26,6 +26,7 @@ export class ChargingPeriodDto {
   @ArrayMinSize(1)
   @ValidateNested({ each: true })
   @Type(() => CdrDimensionDto)
+  @Expose()
   dimensions: CdrDimensionDto[];
 
   /**
