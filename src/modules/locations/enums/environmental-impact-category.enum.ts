@@ -10,5 +10,5 @@ export enum EnvironmentalImpactCategory {
   /**
    * Exhausted carbon dioxide in grams per kilowatthour.
    */
-  CARBON_DIOXIDE = 'CARBON_DIOXIDE'
+  CARBON_DIOXIDE = 'CARBON_DIOXIDE',
 }

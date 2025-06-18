@@ -25,5 +25,5 @@ export enum ParkingRestriction {
   /**
    * Parking spot only suitable for (electric) motorcycles or scooters.
    */
-  MOTORCYCLES = 'MOTORCYCLES'
+  MOTORCYCLES = 'MOTORCYCLES',
 }

@@ -53,5 +53,5 @@ export enum ModuleID {
   /**
    * Tokens
    */
-  tokens = 'tokens'
+  tokens = 'tokens',
 }

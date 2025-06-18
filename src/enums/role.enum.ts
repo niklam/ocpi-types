@@ -35,5 +35,5 @@ export enum Role {
   /**
    * Smart Charging Service Provider Role.
    */
-  SCSP = 'SCSP'
+  SCSP = 'SCSP',
 }

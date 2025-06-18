@@ -40,5 +40,5 @@ export enum EnergySourceCategory {
   /**
    * Regenerative power from water turbines.
    */
-  WATER = 'WATER'
+  WATER = 'WATER',
 }

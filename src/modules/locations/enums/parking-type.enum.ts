@@ -31,5 +31,5 @@ export enum ParkingType {
   /**
    * Multistorey car park, mainly underground.
    */
-  UNDERGROUND_GARAGE = 'UNDERGROUND_GARAGE'
+  UNDERGROUND_GARAGE = 'UNDERGROUND_GARAGE',
 }

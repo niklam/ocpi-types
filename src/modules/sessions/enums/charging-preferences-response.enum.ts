@@ -28,5 +28,5 @@ export enum ChargingPreferencesResponse {
   /**
    * profile_type contains a value that is not supported by the EVSE.
    */
-  PROFILE_TYPE_NOT_SUPPORTED = 'PROFILE_TYPE_NOT_SUPPORTED'
+  PROFILE_TYPE_NOT_SUPPORTED = 'PROFILE_TYPE_NOT_SUPPORTED',
 }

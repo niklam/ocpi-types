@@ -15,5 +15,5 @@ export enum ChargingRateUnit {
    * Amperes (current)
    * The amount of Ampere per phase, not the sum of all phases. It is usually more convenient to use this for AC charging.
    */
-  A = 'A'
+  A = 'A',
 }

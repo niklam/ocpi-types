@@ -45,5 +45,5 @@ export enum Status {
   /**
    * No status information available (also used when offline).
    */
-  UNKNOWN = 'UNKNOWN'
+  UNKNOWN = 'UNKNOWN',
 }

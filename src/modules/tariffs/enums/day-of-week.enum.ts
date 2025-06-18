@@ -37,5 +37,5 @@ export enum DayOfWeek {
   /**
    * Sunday
    */
-  SUNDAY = 'SUNDAY'
+  SUNDAY = 'SUNDAY',
 }

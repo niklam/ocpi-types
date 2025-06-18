@@ -100,5 +100,5 @@ export enum Facility {
   /**
    * Wifi or other type of internet available.
    */
-  WIFI = 'WIFI'
+  WIFI = 'WIFI',
 }

@@ -25,5 +25,5 @@ export enum VersionNumber {
   /**
    * OCPI version 2.2.1 (this version)
    */
-  V2_2_1 = '2.2.1'
+  V2_2_1 = '2.2.1',
 }
