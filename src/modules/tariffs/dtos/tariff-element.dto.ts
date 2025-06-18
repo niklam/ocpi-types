@@ -29,5 +29,6 @@ export class TariffElementDto {
   @IsOptional()
   @ValidateNested()
   @Type(() => TariffRestrictionsDto)
+  @Expose()
   restrictions?: TariffRestrictionsDto;
 }
