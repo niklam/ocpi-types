@@ -8,9 +8,12 @@ export class PriceDto {
   /**
    * Price/Cost excluding VAT.
    */
-  @IsNumber({}, {
-    message: 'exclVat must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'exclVat must be a number',
+    },
+  )
   @Min(0, {
     message: 'exclVat must be at least 0',
   })
@@ -21,9 +24,12 @@ export class PriceDto {
    * Price/Cost including VAT.
    */
   @IsOptional()
-  @IsNumber({}, {
-    message: 'inclVat must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'inclVat must be a number',
+    },
+  )
   @Min(0, {
     message: 'inclVat must be at least 0',
   })
