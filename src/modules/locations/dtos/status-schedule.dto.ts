@@ -30,5 +30,6 @@ export class StatusScheduleDto {
   /**
    * Status value during the scheduled period.
    */
+  @Expose()
   status: Status;
 }

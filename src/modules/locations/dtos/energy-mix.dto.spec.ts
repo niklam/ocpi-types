@@ -45,9 +45,7 @@ describe('EnergyMixDto', () => {
     it('should validate with green energy true and no impact data', async () => {
       const dto = plainToInstance(EnergyMixDto, {
         is_green_energy: true,
-        energy_sources: [
-          { source: EnergySourceCategory.SOLAR, percentage: 100 },
-        ],
+        energy_sources: [{ source: EnergySourceCategory.SOLAR, percentage: 100 }],
         supplier_name: 'Solar Power Inc',
       });
 
@@ -121,7 +119,7 @@ describe('EnergyMixDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const energySourcesError = errors.find(e => e.property === 'energySources');
+      const energySourcesError = errors.find((e) => e.property === 'energySources');
       expect(energySourcesError).toBeDefined();
     });
 
@@ -187,7 +185,7 @@ describe('EnergyMixDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const environImpactError = errors.find(e => e.property === 'environImpact');
+      const environImpactError = errors.find((e) => e.property === 'environImpact');
       expect(environImpactError).toBeDefined();
     });
 
@@ -326,12 +324,8 @@ describe('EnergyMixDto', () => {
     it('should properly transform all exposed properties', () => {
       const dto = plainToInstance(EnergyMixDto, {
         is_green_energy: false,
-        energy_sources: [
-          { source: EnergySourceCategory.SOLAR, percentage: 60 },
-        ],
-        environ_impact: [
-          { category: EnvironmentalImpactCategory.CARBON_DIOXIDE, amount: 50.5 },
-        ],
+        energy_sources: [{ source: EnergySourceCategory.SOLAR, percentage: 60 }],
+        environ_impact: [{ category: EnvironmentalImpactCategory.CARBON_DIOXIDE, amount: 50.5 }],
         supplier_name: 'Green Energy Corp',
         energy_product_name: 'Eco Power Plan',
       });
@@ -357,7 +351,7 @@ describe('EnergyMixDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(5);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('isGreenEnergy');
       expect(properties).toContain('energySources');
       expect(properties).toContain('environImpact');
@@ -376,7 +370,7 @@ describe('EnergyMixDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(2);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('energySources');
       expect(properties).toContain('energyProductName');
       expect(properties).not.toContain('isGreenEnergy');

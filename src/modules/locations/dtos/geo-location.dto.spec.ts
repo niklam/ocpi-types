@@ -33,9 +33,7 @@ describe('GeoLocationDto', () => {
     const dto = new GeoLocationDto();
 
     const errors: ValidationError[] = await validate(dto);
-    expect(errors.map((error) => error.property)).toEqual(
-      expect.arrayContaining(['latitude', 'longitude']),
-    );
+    expect(errors.map((error) => error.property)).toEqual(expect.arrayContaining(['latitude', 'longitude']));
   });
 
   it('should be invalid with latitude above 90', async () => {

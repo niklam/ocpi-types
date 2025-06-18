@@ -1,4 +1,5 @@
 import { IsUrl, IsOptional, IsInt, Max, Min } from 'class-validator';
+import { Expose } from 'class-transformer';
 import { IsOcpiCiString } from '../../../decorators/is-ocpi-ci-string.decorator';
 
 // Enum imports
@@ -25,29 +26,39 @@ export class ImageDto {
   /**
    * URL from where the image data can be fetched through a web browser.
    */
-  @IsUrl({}, {
-    message: 'url must be a valid URL'
-  })
+  @IsUrl(
+    {},
+    {
+      message: 'url must be a valid URL',
+    },
+  )
+  @Expose()
   url: string;
 
   /**
    * URL from where a thumbnail of the image can be fetched through a webbrowser.
    */
   @IsOptional()
-  @IsUrl({}, {
-    message: 'thumbnail must be a valid URL'
-  })
+  @IsUrl(
+    {},
+    {
+      message: 'thumbnail must be a valid URL',
+    },
+  )
+  @Expose()
   thumbnail?: string;
 
   /**
    * Describes what the image is used for.
    */
+  @Expose()
   category: ImageCategory;
 
   /**
    * Image type like: gif, jpeg, png, svg.
    */
   @IsOcpiCiString()
+  @Expose()
   type: string;
 
   /**
@@ -55,14 +66,15 @@ export class ImageDto {
    */
   @IsOptional()
   @IsInt({
-    message: 'width must be an integer'
+    message: 'width must be an integer',
   })
   @Min(1, {
-    message: 'width must be at least 1 pixel'
+    message: 'width must be at least 1 pixel',
   })
   @Max(99999, {
-    message: 'width must be at most 99999 pixels'
+    message: 'width must be at most 99999 pixels',
   })
+  @Expose()
   width?: number;
 
   /**
@@ -70,13 +82,14 @@ export class ImageDto {
    */
   @IsOptional()
   @IsInt({
-    message: 'height must be an integer'
+    message: 'height must be an integer',
   })
   @Min(1, {
-    message: 'height must be at least 1 pixel'
+    message: 'height must be at least 1 pixel',
   })
   @Max(99999, {
-    message: 'height must be at most 99999 pixels'
+    message: 'height must be at most 99999 pixels',
   })
+  @Expose()
   height?: number;
 }

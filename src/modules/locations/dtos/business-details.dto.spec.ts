@@ -355,9 +355,7 @@ describe('BusinessDetailsDto', () => {
       const errors: ValidationError[] = await validate(dto);
       // If ImageDto has validation rules, they should be triggered
       // This test verifies that nested validation occurs
-      const logoErrors = errors.filter(
-        (error) => error.property === 'logo' || error.target === dto.logo,
-      );
+      const logoErrors = errors.filter((error) => error.property === 'logo' || error.target === dto.logo);
       // Adjust expectation based on your ImageDto implementation
     });
 
@@ -461,10 +459,7 @@ describe('BusinessDetailsDto', () => {
       const dto2 = new BusinessDetailsDto();
       dto2.name = 'Company 2';
 
-      const [errors1, errors2] = await Promise.all([
-        validate(dto1),
-        validate(dto2),
-      ]);
+      const [errors1, errors2] = await Promise.all([validate(dto1), validate(dto2)]);
 
       expect(errors1).toHaveLength(0);
       expect(errors2).toHaveLength(0);

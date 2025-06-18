@@ -52,14 +52,16 @@ describe('EVSEDto', () => {
         physical_reference: 'Bay 1',
         directions: [{ language: 'en', text: 'Enter from main entrance' }],
         parking_restrictions: [ParkingRestriction.EV_ONLY],
-        images: [{
-          url: 'https://example.com/image.jpg',
-          category: 'CHARGER',
-          type: 'jpeg',
-          thumbnail: 'https://example.com/thumb.jpg',
-          width: 800,
-          height: 600,
-        }],
+        images: [
+          {
+            url: 'https://example.com/image.jpg',
+            category: 'CHARGER',
+            type: 'jpeg',
+            thumbnail: 'https://example.com/thumb.jpg',
+            width: 800,
+            height: 600,
+          },
+        ],
         last_updated: '2023-12-07T10:30:00Z',
       });
 
@@ -99,7 +101,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const uidError = errors.find(e => e.property === 'uid');
+      const uidError = errors.find((e) => e.property === 'uid');
       expect(uidError).toBeDefined();
     });
 
@@ -113,7 +115,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const uidError = errors.find(e => e.property === 'uid');
+      const uidError = errors.find((e) => e.property === 'uid');
       expect(uidError).toBeDefined();
       expect(uidError?.constraints?.maxLength).toBeDefined();
     });
@@ -155,7 +157,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const evseIdError = errors.find(e => e.property === 'evseId');
+      const evseIdError = errors.find((e) => e.property === 'evseId');
       expect(evseIdError).toBeDefined();
       expect(evseIdError?.constraints?.maxLength).toBeDefined();
     });
@@ -184,7 +186,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const connectorsError = errors.find(e => e.property === 'connectors');
+      const connectorsError = errors.find((e) => e.property === 'connectors');
       expect(connectorsError).toBeDefined();
       expect(connectorsError?.constraints?.arrayMinSize).toBeDefined();
     });
@@ -197,7 +199,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const connectorsError = errors.find(e => e.property === 'connectors');
+      const connectorsError = errors.find((e) => e.property === 'connectors');
       expect(connectorsError).toBeDefined();
     });
 
@@ -217,7 +219,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const connectorsError = errors.find(e => e.property === 'connectors');
+      const connectorsError = errors.find((e) => e.property === 'connectors');
       expect(connectorsError).toBeDefined();
     });
 
@@ -230,7 +232,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const connectorsError = errors.find(e => e.property === 'connectors');
+      const connectorsError = errors.find((e) => e.property === 'connectors');
       expect(connectorsError).toBeDefined();
       expect(connectorsError?.constraints?.isArray).toBeDefined();
     });
@@ -260,7 +262,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const floorError = errors.find(e => e.property === 'floorLevel');
+      const floorError = errors.find((e) => e.property === 'floorLevel');
       expect(floorError).toBeDefined();
       expect(floorError?.constraints?.maxLength).toBeDefined();
     });
@@ -288,7 +290,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const floorError = errors.find(e => e.property === 'floorLevel');
+      const floorError = errors.find((e) => e.property === 'floorLevel');
       expect(floorError).toBeDefined();
       expect(floorError?.constraints?.isString).toBeDefined();
     });
@@ -318,7 +320,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const physicalRefError = errors.find(e => e.property === 'physicalReference');
+      const physicalRefError = errors.find((e) => e.property === 'physicalReference');
       expect(physicalRefError).toBeDefined();
       expect(physicalRefError?.constraints?.maxLength).toBeDefined();
     });
@@ -373,7 +375,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const coordinatesError = errors.find(e => e.property === 'coordinates');
+      const coordinatesError = errors.find((e) => e.property === 'coordinates');
       expect(coordinatesError).toBeDefined();
     });
   });
@@ -412,16 +414,13 @@ describe('EVSEDto', () => {
       const dto = plainToInstance(EVSEDto, {
         uid: 'EVSE001',
         connectors: [createValidConnector()],
-        directions: [
-          { language: 'en', text: 'Valid direction' },
-          { invalidProperty: 'invalid' },
-        ],
+        directions: [{ language: 'en', text: 'Valid direction' }, { invalidProperty: 'invalid' }],
         last_updated: '2023-12-07T10:30:00Z',
       });
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const directionsError = errors.find(e => e.property === 'directions');
+      const directionsError = errors.find((e) => e.property === 'directions');
       expect(directionsError).toBeDefined();
     });
 
@@ -435,7 +434,7 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const directionsError = errors.find(e => e.property === 'directions');
+      const directionsError = errors.find((e) => e.property === 'directions');
       expect(directionsError).toBeDefined();
       expect(directionsError?.constraints?.isArray).toBeDefined();
     });
@@ -481,15 +480,13 @@ describe('EVSEDto', () => {
       const dto = plainToInstance(EVSEDto, {
         uid: 'EVSE001',
         connectors: [createValidConnector()],
-        images: [
-          { invalidProperty: 'invalid' },
-        ],
+        images: [{ invalidProperty: 'invalid' }],
         last_updated: '2023-12-07T10:30:00Z',
       });
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const imagesError = errors.find(e => e.property === 'images');
+      const imagesError = errors.find((e) => e.property === 'images');
       expect(imagesError).toBeDefined();
     });
   });
@@ -503,18 +500,12 @@ describe('EVSEDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const lastUpdatedError = errors.find(e => e.property === 'lastUpdated');
+      const lastUpdatedError = errors.find((e) => e.property === 'lastUpdated');
       expect(lastUpdatedError).toBeDefined();
     });
 
     it('should fail with invalid OCPI DateTime format', async () => {
-      const invalidDateTimes = [
-        'invalid-date',
-        '2023-12-07',
-        '10:30:00',
-        '2023/12/07 10:30:00',
-        '',
-      ];
+      const invalidDateTimes = ['invalid-date', '2023-12-07', '10:30:00', '2023/12/07 10:30:00', ''];
 
       for (const dateTime of invalidDateTimes) {
         const dto = plainToInstance(EVSEDto, {
@@ -525,7 +516,7 @@ describe('EVSEDto', () => {
 
         const errors = await validate(dto);
         expect(errors.length).toBeGreaterThan(0);
-        const dateTimeError = errors.find(e => e.property === 'lastUpdated');
+        const dateTimeError = errors.find((e) => e.property === 'lastUpdated');
         expect(dateTimeError).toBeDefined();
       }
     });
@@ -567,7 +558,7 @@ describe('EVSEDto', () => {
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('evseId');
       expect(properties).toContain('connectors');
       expect(properties).toContain('floorLevel');
@@ -581,7 +572,7 @@ describe('EVSEDto', () => {
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('uid');
       expect(properties).toContain('connectors');
       expect(properties).toContain('lastUpdated');
@@ -622,7 +613,11 @@ describe('EVSEDto', () => {
         status_schedule: [
           { period_begin: '2023-12-07T00:00:00Z', period_end: '2023-12-07T23:59:59Z', status: Status.AVAILABLE },
         ],
-        capabilities: [Capability.CHARGING_PROFILE_CAPABLE, Capability.REMOTE_START_STOP_CAPABLE, Capability.RFID_READER],
+        capabilities: [
+          Capability.CHARGING_PROFILE_CAPABLE,
+          Capability.REMOTE_START_STOP_CAPABLE,
+          Capability.RFID_READER,
+        ],
         connectors: [createValidConnector(), { ...createValidConnector(), id: 'CONN002' }],
         floor_level: 'P1',
         coordinates: { latitude: '52.520008', longitude: '13.404954' },

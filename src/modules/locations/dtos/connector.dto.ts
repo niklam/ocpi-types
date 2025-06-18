@@ -19,16 +19,19 @@ export class ConnectorDto {
    * Two Connectors may have the same id as long as they do not belong to the same EVSE object.
    */
   @IsOcpiCiString()
+  @Expose()
   id: string;
 
   /**
    * The standard of the installed connector.
    */
+  @Expose()
   standard: ConnectorType;
 
   /**
    * The format (socket/cable) of the installed connector.
    */
+  @Expose()
   format: ConnectorFormat;
 
   /**
@@ -106,9 +109,12 @@ export class ConnectorDto {
    * URL to the operator's terms and conditions.
    */
   @IsOptional()
-  @IsUrl({}, {
-    message: 'termsAndConditions must be a valid URL',
-  })
+  @IsUrl(
+    {},
+    {
+      message: 'termsAndConditions must be a valid URL',
+    },
+  )
   @Expose({ name: 'terms_and_conditions' })
   termsAndConditions?: string;
 
