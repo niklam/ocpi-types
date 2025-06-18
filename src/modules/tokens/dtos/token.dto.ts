@@ -46,11 +46,13 @@ export class TokenDto {
    */
   @IsOcpiCiString()
   @MaxLength(36)
+  @Expose()
   uid: string;
 
   /**
    * Type of the token.
    */
+  @Expose()
   type: TokenType;
 
   /**
@@ -76,6 +78,7 @@ export class TokenDto {
    */
   @IsString()
   @MaxLength(64)
+  @Expose()
   issuer: string;
 
   /**
@@ -92,11 +95,13 @@ export class TokenDto {
    * Is this Token valid.
    */
   @IsBoolean()
+  @Expose()
   valid: boolean;
 
   /**
    * Indicates what type of white-listing is allowed.
    */
+  @Expose()
   whitelist: WhitelistType;
 
   /**
@@ -106,6 +111,7 @@ export class TokenDto {
   @IsOptional()
   @IsString()
   @MaxLength(2)
+  @Expose()
   language?: string;
 
   /**

@@ -9,7 +9,6 @@ import { DisplayTextDto } from '../../../dtos/display-text.dto';
 // Enum imports
 import { AllowedType } from '../enums/allowed-type.enum';
 
-
 // Decorator imports
 import { IsOcpiCiString } from '../../../decorators/is-ocpi-ci-string.decorator';
 
@@ -20,6 +19,7 @@ export class AuthorizationInfoDto {
   /**
    * Status of the Token, and whether charging is allowed at the optionally given location.
    */
+  @Expose()
   allowed: AllowedType;
 
   /**
@@ -27,6 +27,7 @@ export class AuthorizationInfoDto {
    */
   @ValidateNested()
   @Type(() => TokenDto)
+  @Expose()
   token: TokenDto;
 
   /**
@@ -35,6 +36,7 @@ export class AuthorizationInfoDto {
   @IsOptional()
   @ValidateNested()
   @Type(() => LocationReferencesDto)
+  @Expose()
   location?: LocationReferencesDto;
 
   /**
@@ -52,5 +54,6 @@ export class AuthorizationInfoDto {
   @IsOptional()
   @ValidateNested()
   @Type(() => DisplayTextDto)
+  @Expose()
   info?: DisplayTextDto;
 }
