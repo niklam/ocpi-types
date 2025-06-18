@@ -1,4 +1,5 @@
 import { IsString } from 'class-validator';
+import { Expose } from 'class-transformer';
 
 // Enum imports
 import { ModuleID } from '../enums/module-id.enum';
@@ -14,16 +15,19 @@ export class EndpointDto {
   /**
    * Endpoint identifier.
    */
+  @Expose()
   identifier: ModuleID;
 
   /**
    * Interface role this endpoint implements.
    */
+  @Expose()
   role: InterfaceRole;
 
   /**
    * URL to the endpoint.
    */
   @IsString()
+  @Expose()
   url: string;
 }

@@ -1,5 +1,5 @@
 import { ArrayMinSize, IsArray, IsString, MaxLength, ValidateNested } from 'class-validator';
-import { Type } from 'class-transformer';
+import { Type, Expose } from 'class-transformer';
 
 // DTO imports
 import { CredentialsRoleDto } from './credentials-role.dto';
@@ -31,12 +31,14 @@ export class CredentialsDto {
    */
   @IsString()
   @MaxLength(64)
+  @Expose()
   token: string;
 
   /**
    * The URL to your API versions endpoint.
    */
   @IsString()
+  @Expose()
   url: string;
 
   /**
@@ -46,5 +48,6 @@ export class CredentialsDto {
   @ArrayMinSize(1)
   @ValidateNested({ each: true })
   @Type(() => CredentialsRoleDto)
+  @Expose()
   roles: CredentialsRoleDto[];
 }
