@@ -41,6 +41,7 @@ export class SessionDto {
    */
   @IsOcpiCiString()
   @MaxLength(36)
+  @Expose()
   id: string;
 
   /**
@@ -64,12 +65,16 @@ export class SessionDto {
   /**
    * How many kWh were charged.
    */
-  @IsNumber({}, {
-    message: 'kwh must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'kwh must be a number',
+    },
+  )
   @Min(0, {
     message: 'kwh must be at least 0',
   })
+  @Expose()
   kwh: number;
 
   /**
@@ -137,6 +142,7 @@ export class SessionDto {
    */
   @IsString()
   @MaxLength(3)
+  @Expose()
   currency: string;
 
   /**
@@ -162,6 +168,7 @@ export class SessionDto {
   /**
    * The status of the session.
    */
+  @Expose()
   status: SessionStatus;
 
   /**
