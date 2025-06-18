@@ -1,4 +1,5 @@
 import { IsString, MaxLength, MinLength } from 'class-validator';
+import { Expose } from 'class-transformer';
 
 /**
  * Multi-language text for display to end users.
@@ -10,6 +11,7 @@ export class DisplayTextDto {
   @IsString()
   @MinLength(2)
   @MaxLength(2)
+  @Expose()
   language: string;
 
   /**
@@ -18,5 +20,6 @@ export class DisplayTextDto {
    */
   @IsString()
   @MaxLength(512)
+  @Expose()
   text: string;
 }
