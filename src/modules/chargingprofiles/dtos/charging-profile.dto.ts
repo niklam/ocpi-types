@@ -27,6 +27,7 @@ export class ChargingProfileDto {
    */
   @IsOptional()
   @IsInt()
+  @Expose()
   duration?: number;
 
   /**

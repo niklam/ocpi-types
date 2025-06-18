@@ -1,4 +1,5 @@
 import { IsInt, Min } from 'class-validator';
+import { Expose } from 'class-transformer';
 
 // Enum imports
 import { ChargingProfileResponseType } from '../enums/charging-profile-response-type.enum';
@@ -14,6 +15,7 @@ export class ChargingProfileResponseDto {
   /**
    * Response from the CPO on the ChargingProfile request.
    */
+  @Expose()
   result: ChargingProfileResponseType;
 
   /**
@@ -25,5 +27,6 @@ export class ChargingProfileResponseDto {
   @Min(1, {
     message: 'timeout must be at least 1 second',
   })
+  @Expose()
   timeout: number;
 }

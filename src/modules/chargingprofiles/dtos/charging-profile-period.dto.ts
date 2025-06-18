@@ -16,5 +16,6 @@ export class ChargingProfilePeriodDto {
    * Charging rate limit during the profile period, in the applicable chargingRateUnit, for example in Amperes (A) or Watts (W). Accepts at most one digit fraction (e.g. 8.1).
    */
   @IsNumber({ maxDecimalPlaces: 1 })
+  @Expose()
   limit: number;
 }

@@ -1,5 +1,5 @@
 import { IsOptional, ValidateNested } from 'class-validator';
-import { Type } from 'class-transformer';
+import { Type, Expose } from 'class-transformer';
 
 // DTO imports
 import { ActiveChargingProfileDto } from './active-charging-profile.dto';
@@ -15,6 +15,7 @@ export class ActiveChargingProfileResultDto {
   /**
    * The EVSE will indicate if it was able to process the request for the ActiveChargingProfile
    */
+  @Expose()
   result: ChargingProfileResultType;
 
   /**
@@ -23,5 +24,6 @@ export class ActiveChargingProfileResultDto {
   @IsOptional()
   @ValidateNested()
   @Type(() => ActiveChargingProfileDto)
+  @Expose()
   profile?: ActiveChargingProfileDto;
 }
