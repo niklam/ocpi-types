@@ -18,6 +18,7 @@ export class RegularHoursDto {
   @Max(7, {
     message: 'weekday must be at most 7 (Sunday)',
   })
+  @Expose()
   weekday: number;
 
   /**

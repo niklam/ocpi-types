@@ -33,9 +33,11 @@ export class LocationDto {
 
   @IsOcpiCiString()
   @MaxLength(36)
+  @Expose()
   id: string;
 
   @IsBoolean()
+  @Expose()
   publish: boolean;
 
   @IsOptional()
@@ -48,14 +50,17 @@ export class LocationDto {
   @IsOptional()
   @IsString()
   @MaxLength(255)
+  @Expose()
   name?: string;
 
   @IsString()
   @MaxLength(45)
+  @Expose()
   address: string;
 
   @IsString()
   @MaxLength(45)
+  @Expose()
   city: string;
 
   @IsOptional()
@@ -67,14 +72,17 @@ export class LocationDto {
   @IsOptional()
   @IsString()
   @MaxLength(20)
+  @Expose()
   state?: string;
 
   @IsString()
   @MaxLength(3)
+  @Expose()
   country: string;
 
   @ValidateNested()
   @Type(() => GeoLocationDto)
+  @Expose()
   coordinates: GeoLocationDto;
 
   @IsOptional()
@@ -92,31 +100,37 @@ export class LocationDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => EVSEDto)
+  @Expose()
   evses?: EVSEDto[];
 
   @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => DisplayTextDto)
+  @Expose()
   directions?: DisplayTextDto[];
 
   @IsOptional()
   @ValidateNested()
   @Type(() => BusinessDetailsDto)
+  @Expose()
   operator?: BusinessDetailsDto;
 
   @IsOptional()
   @ValidateNested()
   @Type(() => BusinessDetailsDto)
+  @Expose()
   suboperator?: BusinessDetailsDto;
 
   @IsOptional()
   @ValidateNested()
   @Type(() => BusinessDetailsDto)
+  @Expose()
   owner?: BusinessDetailsDto;
 
   @IsOptional()
   @IsArray()
+  @Expose()
   facilities?: Facility[];
 
   @IsString()
@@ -139,6 +153,7 @@ export class LocationDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => ImageDto)
+  @Expose()
   images?: ImageDto[];
 
   @IsOptional()

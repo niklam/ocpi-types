@@ -1,6 +1,6 @@
 import { IsLatitude, IsLongitude, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { DisplayTextDto } from '../../../dtos/display-text.dto';
-import { Type } from 'class-transformer';
+import { Type, Expose } from 'class-transformer';
 
 /**
  * This class defines an additional geolocation that is relevant for the Charge Point.
@@ -16,6 +16,7 @@ export class AdditionalGeoLocationDto {
   @IsLatitude({
     message: 'latitude must be a valid latitude coordinate (e.g., 50.770774)',
   })
+  @Expose()
   latitude: string;
 
   /**
@@ -27,6 +28,7 @@ export class AdditionalGeoLocationDto {
   @IsLongitude({
     message: 'longitude must be a valid longitude coordinate (e.g., -126.104965)',
   })
+  @Expose()
   longitude: string;
 
   /**
@@ -36,5 +38,6 @@ export class AdditionalGeoLocationDto {
   @IsOptional()
   @ValidateNested()
   @Type(() => DisplayTextDto)
+  @Expose()
   name?: DisplayTextDto;
 }

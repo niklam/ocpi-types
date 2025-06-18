@@ -18,6 +18,7 @@ import { ParkingRestriction } from '../enums/parking-restriction.enum';
 export class EVSEDto {
   @IsOcpiCiString()
   @MaxLength(36)
+  @Expose()
   uid: string;
 
   @IsOptional()
@@ -27,6 +28,7 @@ export class EVSEDto {
   evseId?: string;
 
   @IsOptional()
+  @Expose()
   status: Status;
 
   @IsOptional()
@@ -38,12 +40,14 @@ export class EVSEDto {
 
   @IsOptional()
   @IsArray()
+  @Expose()
   capabilities?: Capability[];
 
   @IsArray()
   @ArrayMinSize(1)
   @ValidateNested({ each: true })
   @Type(() => ConnectorDto)
+  @Expose()
   connectors: ConnectorDto[];
 
   @IsOptional()
@@ -55,6 +59,7 @@ export class EVSEDto {
   @IsOptional()
   @ValidateNested()
   @Type(() => GeoLocationDto)
+  @Expose()
   coordinates?: GeoLocationDto;
 
   @IsOptional()
@@ -67,6 +72,7 @@ export class EVSEDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => DisplayTextDto)
+  @Expose()
   directions?: DisplayTextDto[];
 
   @IsOptional()
@@ -78,6 +84,7 @@ export class EVSEDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => ImageDto)
+  @Expose()
   images?: ImageDto[];
 
   @IsOcpiDateTime()

@@ -96,9 +96,11 @@ describe('AdditionalGeoLocationDto', () => {
 
         const errors = await validate(dto);
         expect(errors.length).toBeGreaterThan(0);
-        const latError = errors.find(e => e.property === 'latitude');
+        const latError = errors.find((e) => e.property === 'latitude');
         expect(latError).toBeDefined();
-        expect(latError?.constraints?.isLatitude).toBe('latitude must be a valid latitude coordinate (e.g., 50.770774)');
+        expect(latError?.constraints?.isLatitude).toBe(
+          'latitude must be a valid latitude coordinate (e.g., 50.770774)',
+        );
       }
     });
   });
@@ -137,9 +139,11 @@ describe('AdditionalGeoLocationDto', () => {
 
         const errors = await validate(dto);
         expect(errors.length).toBeGreaterThan(0);
-        const lngError = errors.find(e => e.property === 'longitude');
+        const lngError = errors.find((e) => e.property === 'longitude');
         expect(lngError).toBeDefined();
-        expect(lngError?.constraints?.isLongitude).toBe('longitude must be a valid longitude coordinate (e.g., -126.104965)');
+        expect(lngError?.constraints?.isLongitude).toBe(
+          'longitude must be a valid longitude coordinate (e.g., -126.104965)',
+        );
       }
     });
   });
@@ -193,7 +197,7 @@ describe('AdditionalGeoLocationDto', () => {
 
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
-      const nameError = errors.find(e => e.property === 'name');
+      const nameError = errors.find((e) => e.property === 'name');
       expect(nameError).toBeDefined();
     });
   });
@@ -208,7 +212,7 @@ describe('AdditionalGeoLocationDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(2);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('latitude');
       expect(properties).toContain('longitude');
     });
@@ -219,7 +223,7 @@ describe('AdditionalGeoLocationDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(2);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('latitude');
       expect(properties).toContain('longitude');
     });
@@ -227,7 +231,7 @@ describe('AdditionalGeoLocationDto', () => {
     it('should handle mixed valid and invalid fields', async () => {
       const dto = plainToInstance(AdditionalGeoLocationDto, {
         latitude: '50.770774', // valid
-        longitude: 'invalid',   // invalid
+        longitude: 'invalid', // invalid
       });
 
       const errors = await validate(dto);
@@ -266,8 +270,8 @@ describe('AdditionalGeoLocationDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(2);
 
-      const latError = errors.find(e => e.property === 'latitude');
-      const lngError = errors.find(e => e.property === 'longitude');
+      const latError = errors.find((e) => e.property === 'latitude');
+      const lngError = errors.find((e) => e.property === 'longitude');
       expect(latError?.constraints?.isString).toBeDefined();
       expect(lngError?.constraints?.isString).toBeDefined();
     });

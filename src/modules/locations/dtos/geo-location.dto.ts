@@ -1,4 +1,5 @@
 import { IsLatitude, IsLongitude, IsString } from 'class-validator';
+import { Expose } from 'class-transformer';
 
 /**
  * This class defines the geo location of the Charge Point.
@@ -20,6 +21,7 @@ export class GeoLocationDto {
   @IsLatitude({
     message: 'latitude must be a valid latitude coordinate (e.g., 50.770774)',
   })
+  @Expose()
   latitude: string;
 
   /**
@@ -33,5 +35,6 @@ export class GeoLocationDto {
   @IsLongitude({
     message: 'longitude must be a valid longitude coordinate (e.g., -126.104965)',
   })
+  @Expose()
   longitude: string;
 }

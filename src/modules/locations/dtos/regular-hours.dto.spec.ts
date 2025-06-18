@@ -299,7 +299,7 @@ describe('RegularHoursDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(2);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('periodBegin');
       expect(properties).toContain('periodEnd');
     });
@@ -312,7 +312,7 @@ describe('RegularHoursDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(2);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('weekday');
       expect(properties).toContain('periodEnd');
     });
@@ -325,7 +325,7 @@ describe('RegularHoursDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(2);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('weekday');
       expect(properties).toContain('periodBegin');
     });
@@ -336,7 +336,7 @@ describe('RegularHoursDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(3);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('weekday');
       expect(properties).toContain('periodBegin');
       expect(properties).toContain('periodEnd');
@@ -348,7 +348,7 @@ describe('RegularHoursDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(3);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('weekday');
       expect(properties).toContain('periodBegin');
       expect(properties).toContain('periodEnd');
@@ -366,7 +366,7 @@ describe('RegularHoursDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(3);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('weekday');
       expect(properties).toContain('periodBegin');
       expect(properties).toContain('periodEnd');
@@ -382,7 +382,7 @@ describe('RegularHoursDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(3);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('weekday');
       expect(properties).toContain('periodBegin');
       expect(properties).toContain('periodEnd');
@@ -398,7 +398,7 @@ describe('RegularHoursDto', () => {
       const errors = await validate(dto);
       expect(errors).toHaveLength(2);
 
-      const properties = errors.map(error => error.property);
+      const properties = errors.map((error) => error.property);
       expect(properties).toContain('periodBegin');
       expect(properties).toContain('periodEnd');
       expect(properties).not.toContain('weekday');

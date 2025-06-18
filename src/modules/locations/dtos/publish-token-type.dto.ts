@@ -7,10 +7,12 @@ export class PublishTokenTypeDto {
   @IsOptional()
   @IsOcpiCiString()
   @MaxLength(36)
+  @Expose()
   uid?: string;
 
   @ValidateIf((o: PublishTokenTypeDto) => o.uid !== undefined && o.uid !== null && o.uid !== '')
   @IsOptional()
+  @Expose()
   type?: TokenType;
 
   @IsOptional()
@@ -19,10 +21,13 @@ export class PublishTokenTypeDto {
   @Expose({ name: 'visual_number' })
   visualNumber?: string;
 
-  @ValidateIf((o: PublishTokenTypeDto) => o.visualNumber !== undefined && o.visualNumber !== null && o.visualNumber !== '')
+  @ValidateIf(
+    (o: PublishTokenTypeDto) => o.visualNumber !== undefined && o.visualNumber !== null && o.visualNumber !== '',
+  )
   @IsOptional()
   @IsString()
   @MaxLength(64)
+  @Expose()
   issuer?: string;
 
   @IsOptional()
