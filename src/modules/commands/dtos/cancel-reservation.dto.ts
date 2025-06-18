@@ -12,9 +12,12 @@ export class CancelReservationDto {
   /**
    * URL that the CommandResult POST should be sent to. This URL might contain a unique ID to be able to distinguish between CancelReservation requests.
    */
-  @IsUrl({}, {
-    message: 'responseUrl must be a valid URL',
-  })
+  @IsUrl(
+    {},
+    {
+      message: 'responseUrl must be a valid URL',
+    },
+  )
   @Expose({ name: 'response_url' })
   responseUrl: string;
 

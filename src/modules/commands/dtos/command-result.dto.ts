@@ -1,5 +1,5 @@
 import { IsArray, IsOptional, ValidateNested } from 'class-validator';
-import { Type } from 'class-transformer';
+import { Type, Expose } from 'class-transformer';
 
 // DTO imports
 import { DisplayTextDto } from '../../../dtos/display-text.dto';
@@ -14,6 +14,7 @@ export class CommandResultDto {
   /**
    * Result of the command request as sent by the Charge Point to the CPO.
    */
+  @Expose()
   result: CommandResultType;
 
   /**
@@ -23,5 +24,6 @@ export class CommandResultDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => DisplayTextDto)
+  @Expose()
   message?: DisplayTextDto[];
 }

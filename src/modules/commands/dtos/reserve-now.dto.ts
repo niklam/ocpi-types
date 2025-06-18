@@ -33,6 +33,7 @@ export class ReserveNowDto {
    */
   @ValidateNested()
   @Type(() => TokenDto)
+  @Expose()
   token: TokenDto;
 
   /**

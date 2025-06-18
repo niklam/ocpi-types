@@ -1,5 +1,5 @@
 import { IsArray, IsInt, IsOptional, Min, ValidateNested } from 'class-validator';
-import { Type } from 'class-transformer';
+import { Type, Expose } from 'class-transformer';
 
 // DTO imports
 import { DisplayTextDto } from '../../../dtos/display-text.dto';
@@ -18,6 +18,7 @@ export class CommandResponseDto {
   /**
    * Response from the CPO on the command request.
    */
+  @Expose()
   result: CommandResponseType;
 
   /**
@@ -29,6 +30,7 @@ export class CommandResponseDto {
   @Min(1, {
     message: 'timeout must be at least 1 second',
   })
+  @Expose()
   timeout: number;
 
   /**
@@ -38,5 +40,6 @@ export class CommandResponseDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => DisplayTextDto)
+  @Expose()
   message?: DisplayTextDto[];
 }
