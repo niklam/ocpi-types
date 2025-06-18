@@ -29,9 +29,12 @@ export class ChargingPreferencesDto {
    * Requested amount of energy in kWh. The EV driver wants to have this amount of energy charged.
    */
   @IsOptional()
-  @IsNumber({}, {
-    message: 'energyNeed must be a number',
-  })
+  @IsNumber(
+    {},
+    {
+      message: 'energyNeed must be a number',
+    },
+  )
   @Min(0, {
     message: 'energyNeed must be at least 0',
   })
