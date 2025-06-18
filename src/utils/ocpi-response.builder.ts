@@ -6,33 +6,33 @@ export class OcpiResponseBuilder {
    * Create a successful response with data
    */
   static success<T>(data: T, message?: string): OcpiResponse<T> {
-    return {
-      data,
-      status_code: OcpiStatusCode.SUCCESS_GENERIC,
-      status_message: message,
-      timestamp: new Date().toISOString(),
-    };
+    const response = new OcpiResponse<T>();
+    response.data = data;
+    response.statusCode = OcpiStatusCode.SUCCESS_GENERIC;
+    response.statusMessage = message;
+    response.timestamp = new Date().toISOString();
+    return response;
   }
 
   /**
    * Create a successful response with no data
    */
   static successEmpty(message?: string): OcpiErrorResponse {
-    return {
-      status_code: OcpiStatusCode.SUCCESS_GENERIC,
-      status_message: message,
-      timestamp: new Date().toISOString(),
-    };
+    const response = new OcpiErrorResponse();
+    response.statusCode = OcpiStatusCode.SUCCESS_GENERIC;
+    response.statusMessage = message;
+    response.timestamp = new Date().toISOString();
+    return response;
   }
 
   /**
    * Create an error response
    */
   static error(statusCode: number, message?: string): OcpiErrorResponse {
-    return {
-      status_code: statusCode,
-      status_message: message,
-      timestamp: new Date().toISOString(),
-    };
+    const response = new OcpiErrorResponse();
+    response.statusCode = statusCode;
+    response.statusMessage = message;
+    response.timestamp = new Date().toISOString();
+    return response;
   }
 }
