@@ -32,11 +32,13 @@ export class ClientInfoDto {
   /**
    * The role of the connected party.
    */
+  @Expose()
   role: Role;
 
   /**
    * Status of the connection to the party.
    */
+  @Expose()
   status: ConnectionStatus;
 
   /**

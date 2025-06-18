@@ -17,6 +17,7 @@ export class CredentialsRoleDto {
   /**
    * Type of role.
    */
+  @Expose()
   role: Role;
 
   /**
